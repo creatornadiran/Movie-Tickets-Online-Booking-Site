@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;    
+}
+nav {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  height: 110px;
+  padding: 30px 25px;
+  justify-content: space-between;
+}
+.nav--icon {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10%;
+}
+
+.my-navbar{
+  background-color:#f16775;
+  border-style: groove;
+  border-width:0.0001vh;
+}
+.camp-nav{
+  height: 25vh;
+}
+.my-button{
+  padding-right: 3vh;
+}
+.enter{
+  height: 5vh;
+}
+.text{
+ color:black;
+ font-size: 1.2em;
+ font-style: oblique;
+ padding-left: 5px;
+}
+.campaigns{
+  height: 30vh;
+
+}
+.prev-button {
+  background-color: #2a2a2a;
+  position: absolute;
+  left: -5px;
+}
+
+.next-button {
+  background-color: #2a2a2a;
+  position: absolute;
+  right: -5px;
+}
