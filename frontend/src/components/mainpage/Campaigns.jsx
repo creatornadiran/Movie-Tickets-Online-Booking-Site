@@ -1,5 +1,4 @@
 import slide1 from "../../assets/images/slide1.png";
-import "./mainpage-navbar.css";
 const campaigns = () => {
   return (
     <div

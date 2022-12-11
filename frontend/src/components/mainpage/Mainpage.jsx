@@ -1,11 +1,11 @@
-import MainpageNavbar from "./MainpageNavbar";
+import Navbar from "../navbar/Navbar";
 import Campaigns from "./Campaigns";
 import MainpageCardSlider from "./MainpageCardSlider";
 
 const Mainpage = () => {
   return (
     <div>
-      <MainpageNavbar />
+      <Navbar />
       <Campaigns />
       <MainpageCardSlider />
     </div>
