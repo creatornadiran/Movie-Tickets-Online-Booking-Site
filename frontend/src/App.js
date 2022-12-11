@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
 import Mainpage from "./components/mainpage/Mainpage";
-import FilmDetailPage from "./components/film-details/FilmDetailPage";
+import MovieDetailPage from "./components/movie-details/MovieDetailPage";
 export default function App() {
   const helmetContext = {};
   return (
@@ -13,7 +13,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Mainpage />} />
-          <Route path="film-details" element={<FilmDetailPage />} />
+          <Route path="film-details" element={<MovieDetailPage />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>

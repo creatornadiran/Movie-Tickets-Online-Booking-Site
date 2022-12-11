@@ -1,7 +1,7 @@
 import logo from "../../assets/images/logo.png";
 import signIn from "../../assets/images/signIn.jpg";
 import signUp from "../../assets/images/signUp.png";
-import "./mainpage-navbar.css";
+import "./Navbar.css";
 
 const Navbar = () => {
   return (

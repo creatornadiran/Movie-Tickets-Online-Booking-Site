@@ -4,8 +4,10 @@ import "./mainpage-card-slider.css";
 import { Link, useNavigate } from "react-router-dom";
 const MainpageCardSlider = () => {
   const navigate = useNavigate();
-  const toFilmA = (fname) => {
-    navigate("/film-details", { state: { id: 2, name: fname } });
+  const toFilmA = (fname, src, scr) => {
+    navigate("/film-details", {
+      state: { id: 1, name: fname, img: src, score: scr },
+    });
   };
   return (
     <div
@@ -39,7 +41,11 @@ const MainpageCardSlider = () => {
                 <h5 class="card-title">Card title</h5>
                 <a
                   onClick={() => {
-                    toFilmA("The Godfather");
+                    toFilmA(
+                      "The Godfather",
+                      "https://m.media-amazon.com/images/M/MV5BOWE1MWE3ZDktOThlZS00ZmRiLWE4ZGEtNWJkMTVlZjdhZDIyXkEyXkFqcGdeQW1pYnJ5YW50._V1_.jpg",
+                      "9.5"
+                    );
                   }}
                   class="btn btn-primary"
                 >
@@ -57,7 +63,11 @@ const MainpageCardSlider = () => {
                 <h5 class="card-title">Card title</h5>
                 <a
                   onClick={() => {
-                    toFilmA("The Batman");
+                    toFilmA(
+                      "The Batman",
+                      "https://m.media-amazon.com/images/I/51r4i5VQK3L._AC_SY1000_.jpg",
+                      "9.7"
+                    );
                   }}
                   class="btn btn-primary"
                 >

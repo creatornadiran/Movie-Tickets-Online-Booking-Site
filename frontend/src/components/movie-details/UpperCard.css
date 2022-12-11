@@ -1,0 +1,48 @@
+.a {
+  position: flex;
+  width: 100%;
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+}
+
+.blur {
+  display: flex;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  height: 100%;
+  width: 100%;
+}
+.upper-details {
+  color: white;
+}
+
+.b {
+  margin: 100px;
+  width: auto;
+  height: 150px;
+}
+
+.book-button {
+  padding: 10px;
+  color: white;
+  background: black;
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+}
+
+.blocks {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+}
+
+li {
+  margin-right: 20px;
+}
+
+.inside-button {
+  margin: 10px;
+}
