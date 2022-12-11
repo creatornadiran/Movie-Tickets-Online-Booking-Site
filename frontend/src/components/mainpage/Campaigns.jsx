@@ -1,4 +1,4 @@
-import slide1 from "./images/slide1.png";
+import slide1 from "../../assets/images/slide1.png";
 import "./mainpage-navbar.css";
 const campaigns = () => {
   return (
@@ -58,7 +58,10 @@ const campaigns = () => {
         data-bs-target="#carouselExampleIndicators"
         data-bs-slide="prev"
       >
-        <span class="carousel-control-prev-icon prev-button" aria-hidden="true"></span>
+        <span
+          class="carousel-control-prev-icon prev-button"
+          aria-hidden="true"
+        ></span>
         <span class="visually-hidden">Previous</span>
       </button>
       <button
@@ -67,7 +70,10 @@ const campaigns = () => {
         data-bs-target="#carouselExampleIndicators"
         data-bs-slide="next"
       >
-        <span class="carousel-control-next-icon next-button" aria-hidden="true"></span>
+        <span
+          class="carousel-control-next-icon next-button"
+          aria-hidden="true"
+        ></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
