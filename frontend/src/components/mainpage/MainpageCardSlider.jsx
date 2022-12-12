@@ -4,9 +4,18 @@ import "./mainpage-card-slider.css";
 import { Link, useNavigate } from "react-router-dom";
 const MainpageCardSlider = () => {
   const navigate = useNavigate();
-  const toFilmA = (fname, src, scr) => {
+  const toFilmA = (fname, src, scr, tgs, abt, acts, dur) => {
     navigate("/film-details", {
-      state: { id: 1, name: fname, img: src, score: scr },
+      state: {
+        id: 1,
+        name: fname,
+        img: src,
+        score: scr,
+        tags: tgs,
+        about: abt,
+        actors: acts,
+        duration: dur,
+      },
     });
   };
   return (
@@ -44,7 +53,11 @@ const MainpageCardSlider = () => {
                     toFilmA(
                       "The Godfather",
                       "https://m.media-amazon.com/images/M/MV5BOWE1MWE3ZDktOThlZS00ZmRiLWE4ZGEtNWJkMTVlZjdhZDIyXkEyXkFqcGdeQW1pYnJ5YW50._V1_.jpg",
-                      "9.5"
+                      "9.5",
+                      ["2D", "Turkish", "IMAX"],
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                      ["Ali", "Ahmet", "Mehmet"],
+                      "2h 40min"
                     );
                   }}
                   class="btn btn-primary"
@@ -66,7 +79,11 @@ const MainpageCardSlider = () => {
                     toFilmA(
                       "The Batman",
                       "https://m.media-amazon.com/images/I/51r4i5VQK3L._AC_SY1000_.jpg",
-                      "9.7"
+                      "9.7",
+                      ["3D", "English", "IMAX"],
+                      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                      ["Hasan", "Ahmet", "Mehmet"],
+                      "1h 40min"
                     );
                   }}
                   class="btn btn-primary"

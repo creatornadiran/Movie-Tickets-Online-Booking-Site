@@ -1,6 +1,7 @@
 import "./UpperCard.css";
 import { FaStar, FaTicketAlt } from "react-icons/fa";
 const UpperCard = (props) => {
+  const tagList = props.tags;
   return (
     <div
       style={{
@@ -18,10 +19,11 @@ const UpperCard = (props) => {
             <FaStar size={30} color="yellow" /> {props.score}
           </p>
           <ul className="blocks">
-            <li>2D</li>
-            <li>Turkish</li>
-            <li>IMAX</li>
+            {tagList.map(function (item, id) {
+              return <li key={id}>{item}</li>;
+            })}
           </ul>
+          <p>{props.duration}</p>
           <div>
             <button className="book-button">
               <div className="inside-button">
