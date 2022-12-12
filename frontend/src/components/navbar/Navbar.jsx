@@ -22,14 +22,14 @@ const Navbar = () => {
           Sign Up
         </a>
         <img src={logo} alt="Logo" className="nav--icon" />
-        <form class="d-flex my-button" role="search">
+        <form className="d-flex my-button" role="search">
           <input
-            class="form-control me-2 "
+            className="form-control me-2 "
             type="search"
             placeholder="Search"
             aria-label="Search"
           />
-          <button class="btn btn-outline-success " type="submit">
+          <button className="btn btn-outline-success " type="submit">
             Search
           </button>
         </form>
@@ -44,7 +44,7 @@ const Navbar = () => {
         </button>
         <div
           className="offcanvas offcanvas-end"
-          tabindex="-1"
+          tabIndex="-1"
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
         >
