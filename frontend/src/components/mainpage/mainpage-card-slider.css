@@ -1,3 +1,6 @@
+.carousel-inner {
+  overflow: hidden;
+}
 .cards-wrapper {
   display: flex;
   justify-content: center;
@@ -7,38 +10,87 @@
   max-height: 100%;
 }
 .card {
-  margin: 0 0.5em;
+  margin: 0 1.5em;
   box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
   border: none;
-  border-radius: 0;
-  width:350px; /* or whatever width you want. */
-   max-width:550px; /* or whatever width you want. */
-   display: inline-block;
-}
-.carousel-inner {
-  padding: 1em;
+  border-radius: 10;
+  width: 300px; /* or whatever width you want. */
+  max-width: 550px; /* or whatever width you want. */
+  display: inline-block;
+  height: 400px;
+  margin-bottom: 50px;
+  --bs-card-inner-border-radius: calc(0);
 }
 
 @media (min-width: 768px) {
   .card img {
-    height: 11em;
+    height: 300px;
   }
 }
+
 .prev-button {
   background-color: #2a2a2a;
   position: absolute;
-  left: -5px;
+  left: 0px;
 }
 
 .next-button {
   background-color: #2a2a2a;
   position: absolute;
-  right: -5px;
+  right: 0px;
 }
-.my{
-  height: 20px;
-  background-color: blueviolet;
-}
-.film-card{
+
+.film-card {
   width: 100vh;
+}
+.camp-nav {
+  height: 65vh;
+}
+.campaigns {
+  height: 65vh;
+  margin-bottom: 8px;
+}
+.nav-link {
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: #f16775;
+  text-decoration: none;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+.nav {
+  --bs-nav-link-padding-x: 1rem;
+  --bs-nav-link-padding-y: 0.5rem;
+  --bs-nav-link-font-weight: ;
+  --bs-nav-link-color: #373e98;
+  --bs-nav-link-hover-color: #373e98;
+  --bs-nav-link-disabled-color: #f16775;
+
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+.tabs {
+  margin-bottom: 25px;
+}
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  color: #373e98;
+}
+.form-control {
+  color: #212529;
+  border: 1px solid #373e98;
+}
+.btn-primary {
+  --bs-btn-bg: #2a2a2a;
+  --bs-btn-border-color: #2a2a2a;
+  --bs-btn-hover-bg: #2a2a2a;
+  --bs-btn-hover-border-color: #2a2a2a;
+  --bs-btn-active-bg: #2a2a2a;
+  --bs-btn-active-border-color: #2a2a2a;
+  --bs-btn-disabled-bg: #2a2a2a;
+  --bs-btn-disabled-border-color: #2a2a2a;
 }

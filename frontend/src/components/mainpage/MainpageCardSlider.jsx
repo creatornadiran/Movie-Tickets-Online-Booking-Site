@@ -20,13 +20,23 @@ const MainpageCardSlider = () => {
   };
   return (
     <div
+    
       id="carouselExampleControls"
-      class="carousel slide"
+      class="carousel slide "
       data-ride="carousel"
     >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="cards-wrapper">
+      <div class="carousel-inner ">
+        <div class="carousel-item active ">
+          <div class="cards-wrapper ">
+          <div class="card d-none d-md-block">
+              <img src={slide} alt="Slide" class="card-img-top" />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <a href="#" class="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
             <div class="card ">
               <img
                 src="https://cdn.liveaplus.com/uploads/2014/08/TheShawshankRedemption.1-300x226.jpg"
@@ -117,6 +127,15 @@ const MainpageCardSlider = () => {
         </div>
         <div class="carousel-item">
           <div class="cards-wrapper">
+          <div class="card d-none d-md-block">
+              <img src={slide} alt="Slide" class="card-img-top" />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <a href="#" class="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
             <div class="card">
               <img src={slide1} alt="Slide" class="card-img-top" />
               <div class="card-body">
@@ -157,6 +176,15 @@ const MainpageCardSlider = () => {
         </div>
         <div class="carousel-item">
           <div class="cards-wrapper">
+          <div class="card d-none d-md-block">
+              <img src={slide} alt="Slide" class="card-img-top" />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <a href="#" class="btn btn-primary">
+                  Go somewhere
+                </a>
+              </div>
+            </div>
             <div class="card">
               <img src={slide1} alt="Slide" class="card-img-top" />
               <div class="card-body">

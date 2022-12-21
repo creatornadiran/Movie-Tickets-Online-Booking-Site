@@ -19,9 +19,10 @@ nav {
 }
 
 .my-navbar{
-  background-color:#f16775;
+  background-color:white;
   border-style: groove;
-  border-width:0.0001vh;
+  border-width:0.00001cm;
+  border-color: lightgrey;
 }
 .camp-nav{
   height: 25vh;
@@ -52,4 +53,34 @@ nav {
   background-color: #2a2a2a;
   position: absolute;
   right: -5px;
+}
+.signIn{
+  position: absolute;
+  left: 95px;
+}
+.btn-outline-success {
+  --bs-btn-color: #373e98;
+  --bs-btn-border-color: #373e98;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #373e98;
+  --bs-btn-hover-border-color: #373e98;
+  --bs-btn-focus-shadow-rgb: 25,135,84;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #373e98;
+  --bs-btn-active-border-color: #373e98;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #373e98;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: #373e98;
+  --bs-gradient: none;
+}
+.navbar-toggler {
+  padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+  font-size: var(--bs-navbar-toggler-font-size);
+  line-height: 1;
+  color: #373e98;
+  background-color: transparent;
+  border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
+  border-radius: var(--bs-navbar-toggler-border-radius);
+  transition: var(--bs-navbar-toggler-transition);
 }

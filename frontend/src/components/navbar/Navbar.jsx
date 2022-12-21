@@ -1,26 +1,26 @@
 import logo from "../../assets/images/logo.png";
-import signIn from "../../assets/images/signIn.jpg";
-import signUp from "../../assets/images/signUp.png";
 import "./Navbar.css";
-
+import { Link, useNavigate } from "react-router-dom";
 const Navbar = () => {
+  const navigate = useNavigate();
+  const toLogin = () => {
+    
+    navigate('/log-in');
+  };
+
+  const toSignup = () => {
+    
+    navigate('/sign-up');
+  };
   return (
     <nav className="navbar my-navbar">
       <div className="container-fluid">
-        <button onclick="myFunction()">
-          {" "}
-          <img src={signIn} alt="Logo" className="enter" />
+        <button className="btn btn-outline-success " type="submit" onClick={toLogin}>
+          Log In
         </button>
-        <a className="navbar-brand text" href="#">
-          Sign In
-        </a>
-        <button onclick="myFunction()">
-          {" "}
-          <img src={signUp} alt="Logo" className="enter" />
-        </button>
-        <a className="navbar-brand text" href="#">
+        <button className="btn btn-outline-success signIn " type="submit" onClick={toSignup}>
           Sign Up
-        </a>
+        </button>
         <img src={logo} alt="Logo" className="nav--icon" />
         <form className="d-flex my-button" role="search">
           <input
@@ -62,18 +62,13 @@ const Navbar = () => {
           <div className="offcanvas-body">
             <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
-                  Movies In Theaters
+                <a className="nav-link" aria-current="page" href="#">
+                  Sign Up
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  Coming Soon
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Cinemas
+                 Log In
                 </a>
               </li>
               <li className="nav-item">
@@ -87,17 +82,6 @@ const Navbar = () => {
                 </a>
               </li>
             </ul>
-            <form className="d-flex mt-3" role="search">
-              <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
           </div>
         </div>
       </div>
