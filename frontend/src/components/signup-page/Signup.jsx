@@ -6,9 +6,12 @@ const Signup = () => {
   const toHome = () => {
     navigate("/");
   };
+  const toLogin = () => {
+    navigate("/log-in");
+  };
   return (
     <div class="signup">
-        <img src={logo} alt="Logo" className="nav--iconx" />
+      <img src={logo} alt="Logo" className="nav--iconx" />
       <h1 class="text-center">Welcome to Cinemium!</h1>
       <form action="/examples/actions/confirmation.php" method="post">
         <h2>Sign Up</h2>
@@ -71,8 +74,8 @@ const Signup = () => {
             />
           </div>
         </div>
-        <div class="form-group">
-          <label class="checkbox-inline">
+        <div class="form-group ">
+          <label class="checkbox-inline accept">
             <input type="checkbox" required="required" /> I accept the{" "}
             <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>
           </label>
@@ -84,8 +87,8 @@ const Signup = () => {
           onClick={toHome}
         />
       </form>
-      <div class="text-center">
-        Already have an account? <a href="#">Login here</a>
+      <div class="text-center alreadyhave">
+        Already have an account? <a  onClick={toLogin}  href="#">Login here</a>
       </div>
     </div>
   );
