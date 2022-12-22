@@ -1,6 +1,7 @@
 import logo from "../../assets/images/logo.png";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
+import {FaHome} from "react-icons/fa";
 const Navbar = () => {
   const navigate = useNavigate();
   const toLogin = () => {
@@ -12,6 +13,10 @@ const Navbar = () => {
     
     navigate('/sign-up');
   };
+  const toHome = () => {
+    
+    navigate('/');
+  };
   return (
     <nav className="navbar my-navbar">
       <div className="container-fluid">
@@ -22,6 +27,9 @@ const Navbar = () => {
           Sign Up
         </button>
         <img src={logo} alt="Logo" className="nav--icon" />
+        <div className="iconn">
+            <FaHome size={30} color="#373e98" onClick={toHome}/>
+          </div>
         <form className="d-flex my-button" role="search">
           <input
             className="form-control me-2 "
