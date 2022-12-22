@@ -7,11 +7,9 @@ const Login = () => {
     navigate("/");
   };
   return (
-    
-    <div  class="login" >
+    <div class="login">
       <img src={logo} alt="Logo" className="nav--iconn" />
       <h1 class="text-center">Log in to Cinemium</h1>
-
       <form class="needs-validation ">
         <div class="form-group was-validated ">
           <label class="form-label" for="email">
