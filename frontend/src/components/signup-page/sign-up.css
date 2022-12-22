@@ -9,6 +9,7 @@
     border-style: groove;
     border-width:0.00001cm;
     border-color: lightgrey;
+    margin-top: 70px;
   }
 
 .form-control, .form-control:focus, .input-group-addon {
@@ -101,4 +102,19 @@
     width: 40%;
     margin-top: 1vh;
     margin-bottom: 2vh;
+}
+.h2, h2 {
+    font-size: 24px;
+    font-weight: var(--base-text-weight-light, 300);
+    letter-spacing: -0.5px;
+    font-size: calc(1.45rem);
+    margin-left: 15vh;
+}
+.accept{
+    margin-top: 15xp;
+    margin-bottom: 15px;
+}
+.form-control, .btn {
+    margin-bottom: 10px;
+    border-radius: 3px;
 }
