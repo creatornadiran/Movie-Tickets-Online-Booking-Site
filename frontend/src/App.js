@@ -15,11 +15,10 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Mainpage />} />
-          <Route path="film-details" element={<MovieDetailPage />} />
+          <Route path="film-details/*" element={<MovieDetailPage />} />
           <Route path="log-in" element={<Login />} />
           <Route path="sign-up" element={<Signup />} />
         </Routes>
-       
       </BrowserRouter>
     </HelmetProvider>
   );

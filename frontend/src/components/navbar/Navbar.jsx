@@ -1,46 +1,54 @@
 import logo from "../../assets/images/logo.png";
 import "./Navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import {FaHome} from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 const Navbar = () => {
   const navigate = useNavigate();
   const toLogin = () => {
-    
-    navigate('/log-in');
+    navigate("/log-in");
   };
 
   const toSignup = () => {
-    
-    navigate('/sign-up');
+    navigate("/sign-up");
   };
   const toHome = () => {
-    
-    navigate('/');
+    navigate("/");
   };
   return (
     <nav className="navbar my-navbar">
       <div className="container-fluid">
-        <button className="btn btn-outline-success " type="submit" onClick={toLogin}>
+        <button
+          className="btn btn-outline-success "
+          type="submit"
+          onClick={toLogin}
+        >
           Log In
         </button>
-        <button className="btn btn-outline-success signIn " type="submit" onClick={toSignup}>
+        <button
+          className="btn btn-outline-success signIn "
+          type="submit"
+          onClick={toSignup}
+        >
           Sign Up
         </button>
         <img src={logo} alt="Logo" className="nav--icon" />
         <div className="iconn">
-            <FaHome size={30} color="#373e98" onClick={toHome}/>
-          </div>
-        <form className="d-flex my-button" role="search">
-          <input
-            className="form-control me-2 "
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button className="btn btn-outline-success " type="submit">
-            Search
-          </button>
-        </form>
+          <FaHome size={30} color="#373e98" onClick={toHome} />
+        </div>
+        <div className="search-bar">
+          <form className="d-flex my-button" role="search">
+            <input
+              className="form-control me-2 "
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button className="btn btn-outline-success " type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -76,7 +84,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                 Log In
+                  Log In
                 </a>
               </li>
               <li className="nav-item">

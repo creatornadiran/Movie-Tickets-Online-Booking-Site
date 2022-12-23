@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 const MainpageCardSlider = () => {
   const navigate = useNavigate();
   const toFilmA = (fname, src, scr, tgs, abt, acts, dur) => {
-    navigate("/film-details", {
+    navigate(`/film-details/${fname}`, {
       state: {
         id: 1,
         name: fname,
@@ -20,7 +20,6 @@ const MainpageCardSlider = () => {
   };
   return (
     <div
-    
       id="carouselExampleControls"
       class="carousel slide "
       data-ride="carousel"
@@ -28,7 +27,7 @@ const MainpageCardSlider = () => {
       <div class="carousel-inner ">
         <div class="carousel-item active ">
           <div class="cards-wrapper ">
-          <div class="card d-none d-md-block">
+            <div class="card d-none d-md-block">
               <img src={slide} alt="Slide" class="card-img-top" />
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
@@ -127,7 +126,7 @@ const MainpageCardSlider = () => {
         </div>
         <div class="carousel-item">
           <div class="cards-wrapper">
-          <div class="card d-none d-md-block">
+            <div class="card d-none d-md-block">
               <img src={slide} alt="Slide" class="card-img-top" />
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
@@ -176,7 +175,7 @@ const MainpageCardSlider = () => {
         </div>
         <div class="carousel-item">
           <div class="cards-wrapper">
-          <div class="card d-none d-md-block">
+            <div class="card d-none d-md-block">
               <img src={slide} alt="Slide" class="card-img-top" />
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
