@@ -1,6 +1,8 @@
 import "./App.css";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
@@ -13,13 +15,13 @@ export default function App() {
   return (
     <HelmetProvider context={helmetContext}>
       <BrowserRouter>
-        <Routes>
+              <Routes>
           <Route path="/" element={<Mainpage />} />
           <Route path="film-details/*" element={<MovieDetailPage />} />
           <Route path="log-in" element={<Login />} />
           <Route path="sign-up" element={<Signup />} />
         </Routes>
-      </BrowserRouter>
+       </BrowserRouter>
     </HelmetProvider>
   );
 }
