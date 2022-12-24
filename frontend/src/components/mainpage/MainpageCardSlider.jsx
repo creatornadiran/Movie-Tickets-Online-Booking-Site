@@ -55,12 +55,10 @@ const MainpageCardSlider = () => {
          <Card />
          <Card />
          <Card />
-         <Card />
        </div>
      </div>
      <div class="carousel-item">
        <div class="cards-wrapper">
-         <Card />
          <Card />
          <Card />
          <Card />
