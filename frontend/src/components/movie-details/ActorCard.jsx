@@ -1,13 +1,14 @@
+import "./ActorCard.css";
+
 const ActorCard = ({ image, name, roleName }) => {
   return (
-    <button>
-      <div style={{ backgroundImage: `url(${image})` }} className="bg-actor">
-        <div className="d">
-          <h3 className="mb-5">{roleName}</h3>
-          <h5 className="mb-5">{name}</h5>
-        </div>
+    <div class="actor-card">
+      <img src={image} alt="Background image" class="actor-card-image"></img>
+      <div class="actor-card-text">
+        <h2>{name}</h2>
+        <p>{roleName}</p>
       </div>
-    </button>
+    </div>
   );
 };
 
