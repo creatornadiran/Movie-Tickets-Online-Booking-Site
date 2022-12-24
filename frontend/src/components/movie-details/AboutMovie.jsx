@@ -5,11 +5,14 @@ const AboutMovie = (props) => {
   return (
     <div className="a">
       <div className="about">
-        <h1>About</h1>
-        <h3>{props.about}</h3>
+        <h1 className="header">About:</h1>
+        <div className="about-text">
+          <p>{props.about}</p>
+        </div>
       </div>
+
       <div className="actors">
-        <h1>Actors</h1>
+        <h1 className="header">Actors:</h1>
         <ul className="blocks">
           {actorsList.map(function (item, id) {
             return (
@@ -17,7 +20,7 @@ const AboutMovie = (props) => {
                 <ActorCard
                   image={item.image}
                   name={item.name}
-                  roleName={item.image.roleName}
+                  roleName={item.roleName}
                 />
               </li>
             );
