@@ -58,7 +58,9 @@ class Movie(models.Model):
     director = models.CharField(db_column='Director', max_length=45, blank=True, null=True)  # Field name made lowercase.
     duration = models.CharField(db_column='Duration', max_length=45, blank=True, null=True)  # Field name made lowercase.
     language = models.CharField(db_column='Language', max_length=45, blank=True, null=True)  # Field name made lowercase.
-
+    about = models.CharField(db_column='About', max_length=1024, blank=True, null=True)  # Field name made lowercase.
+    score = models.FloatField(db_column='Score',null=True, blank=True, default=None)
+    intheatre = models.BooleanField(db_column='InTheatre', default=True)
     class Meta:
         db_table = 'movie'
 

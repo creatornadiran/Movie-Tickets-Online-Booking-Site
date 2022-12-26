@@ -14,7 +14,11 @@ const MovieDetailPage = () => {
         tags={location.state.tags}
         duration={location.state.duration}
       />
-      <AboutMovie about={location.state.about} actors={location.state.actors} />
+      <AboutMovie
+        about={location.state.about}
+        actors={location.state.actors}
+        director={location.state.director}
+      />
     </div>
   );
 };

@@ -6,7 +6,11 @@ from .import models as m
 
 class MovieView(viewsets.ModelViewSet):
     serializer_class = s.MovieSerializer
-    queryset = m.Movie.objects.all()
+    queryset = m.Movie.objects.filter(intheatre=True)
+
+class MovieComingSoonView(viewsets.ModelViewSet):
+    serializer_class = s.MovieSerializer
+    queryset = m.Movie.objects.filter(intheatre=False)
 
 class CinemaHallView(viewsets.ModelViewSet):
     serializer_class = s.CinemaHallSerializer
