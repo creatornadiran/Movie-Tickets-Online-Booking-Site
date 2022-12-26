@@ -1,7 +1,5 @@
-import slide1 from "../../assets/images/slide1.png";
-import slide from "../../assets/images/slide.png";
 import "./mainpage-card-slider.css";
-import { Link, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import Card from "./Card";
 const MainpageCardSlider = () => {
   const navigate = useNavigate();

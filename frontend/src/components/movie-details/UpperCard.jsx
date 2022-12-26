@@ -1,7 +1,13 @@
 import "./UpperCard.css";
 import { FaStar, FaTicketAlt } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 const UpperCard = (props) => {
   const tagList = props.tags;
+  const navigate = useNavigate();
+  const toReservation= () => {
+    navigate("/film-details/film-name/book-ticket");
+  };
+
   return (
     <div
       style={{
@@ -26,7 +32,7 @@ const UpperCard = (props) => {
           <p>{props.duration}</p>
           <div>
             <button className="book-button">
-              <div className="inside-button">
+              <div className="inside-button" onClick={toReservation}>
                 <FaTicketAlt style={{ marginRight: "10px" }} />
                 Book Ticket
               </div>
