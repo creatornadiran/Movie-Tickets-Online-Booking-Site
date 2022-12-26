@@ -20,6 +20,7 @@ from cinemium import views as v
 
 router = routers.DefaultRouter()
 router.register(r'Movies', v.MovieView)
+router.register(r'MovieComingSoon', v.MovieComingSoonView)
 router.register(r'CinemaHalls', v.CinemaHallView)
 router.register(r'CinemaSeats', v.CinemaSeatView)
 router.register(r'Cinemas', v.CinemaView)

@@ -4,13 +4,19 @@ import axios from "axios";
 import React from "react";
 
 const MainpageCardSlider = (props) => {
+  let inTheatre = props.inTheatre;
   const [movieList, setmovieList] = React.useState(null);
   React.useEffect(() => {
-    axios.get("/api/Movies/").then((response) => {
-      setmovieList(response.data);
-    });
+    if (inTheatre) {
+      axios.get("/api/Movies/").then((response) => {
+        setmovieList(response.data);
+      });
+    } else {
+      axios.get("/api/MovieComingSoon/").then((response) => {
+        setmovieList(response.data);
+      });
+    }
   }, []);
-
   if (!movieList) return null;
   return (
     <div
@@ -20,7 +26,6 @@ const MainpageCardSlider = (props) => {
     >
       <div class="carousel-inner ">
         {[...Array(Math.ceil(movieList.length / 5))].map(function (x, i) {
-          console.log(i);
           return (
             <div class="carousel-item active">
               <div class="cards-wrapper">
