@@ -23,3 +23,9 @@
 .header {
   margin-right: 100px;
 }
+
+.blocks {
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+}
