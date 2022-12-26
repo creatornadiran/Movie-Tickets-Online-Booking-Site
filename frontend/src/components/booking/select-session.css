@@ -1,0 +1,20 @@
+.button{
+    width: 260px;
+    height: 40px;
+    border-color: #373e98
+    ;
+}
+.form1{
+    margin-top: 20px;
+    margin-left: 20vh;
+}
+.button:hover{background-color: #eacbce;}
+.atext{
+    font-family: "Lucida Console", "Courier New", monospace;
+    display: inline-block;
+    margin-left: 25px;
+    color: #373e98;
+}
+.tick{
+    margin-left: 10px;
+}

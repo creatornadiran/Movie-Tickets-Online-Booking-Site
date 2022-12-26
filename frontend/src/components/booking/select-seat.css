@@ -1,0 +1,7 @@
+.seats {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
+  margin-left: 30vh;
+  margin-right: 30vh;
+  margin-top: 10vh;
+}
