@@ -1,5 +1,7 @@
 import "./select-session.css";
 import { FaCheckCircle } from "react-icons/fa";
+import SelectSeat from "./SelectSeat";
+import { useState } from "react";
 const SelectSession = () => {
   const subjectObject = {
     İzmirpark: {
@@ -74,6 +76,13 @@ const SelectSession = () => {
       }
     };
   };
+
+  const [isSeatSelectionOpen, setIsSeatSelectionOpen] = useState(false);
+
+  const handleCheckCircleClick = () => {
+    setIsSeatSelectionOpen(true);
+  };
+
   return (
     <div>
       <form className="form1" name="form1" id="form1" action="/action_page.php">
@@ -95,8 +104,19 @@ const SelectSession = () => {
             Please select movie session
           </option>
         </select>
-      <FaCheckCircle className="tick" size={25} color="#f16775"/>
+        <divv>
+          <FaCheckCircle
+            className="tick"
+            size={25}
+            color="#f16775"
+            onClick={handleCheckCircleClick}
+          />
+          {isSeatSelectionOpen && <SelectSeat />}
+        </divv>
       </form>
+
+      
+     
     </div>
   );
 };
