@@ -5,6 +5,7 @@ import axios from "axios";
 
 const Signup = () => {
   function postData() {
+    console.log("asdas");
     const data = new FormData(document.getElementById("form"));
     axios
       .post("/api/UserViews/", data)
@@ -24,14 +25,14 @@ const Signup = () => {
     navigate("/log-in");
   };
   return (
-    <div class="signup">
+    <div className="signup">
       <img src={logo} alt="Logo" className="nav--iconx" />
-      <h1 class="text-center">Welcome to Cinemium!</h1>
-      <form id="form">
+      <h1 className="text-center">Welcome to Cinemium!</h1>
+      <form id="form" onSubmit={postData}>
         <h2>Sign Up</h2>
         <p>Please fill in this form to create an account!</p>
         <hr />
-        <label for="name">Name:</label>
+        <label form="name">Name:</label>
         <br />
         <input
           type="text"
@@ -42,7 +43,7 @@ const Signup = () => {
         />
         <br />
 
-        <label for="email">Email:</label>
+        <label form="email">Email:</label>
         <br />
         <input
           type="email"
@@ -53,7 +54,7 @@ const Signup = () => {
         />
         <br />
 
-        <label for="user_name">Username:</label>
+        <label form="user_name">Username:</label>
         <br />
         <input
           type="text"
@@ -64,12 +65,12 @@ const Signup = () => {
         />
         <br />
 
-        <label for="password">Password:</label>
+        <label form="password">Password:</label>
         <br />
         <input type="password" id="password" name="password" required />
         <br />
 
-        <label for="phone">Phone:</label>
+        <label form="phone">Phone:</label>
         <br />
         <input
           type="text"
@@ -81,17 +82,12 @@ const Signup = () => {
         <br />
 
         <input type="checkbox" id="terms" name="terms" required />
-        <label for="terms">I accept the terms</label>
+        <label form="terms">I accept the terms</label>
         <br />
 
-        <input
-          class="btn btn-success w-100"
-          type="submit"
-          value="SIGN UP"
-          onClick={postData}
-        />
+        <input className="btn btn-success w-100" type="submit" value="submit" />
       </form>
-      <div class="text-center alreadyhave">
+      <div className="text-center alreadyhave">
         Already have an account?{" "}
         <a onClick={toLogin} href="#">
           Login here
