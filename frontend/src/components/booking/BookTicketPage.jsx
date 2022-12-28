@@ -1,14 +1,13 @@
-import Navbar from "../navbar/Navbar"
-import SelectSession from "./SelectSession"
-import SelectSeat from "./SelectSeat"
+import Navbar from "../navbar/Navbar";
+import SelectSession from "./SelectSession";
+import SelectSeat from "./SelectSeat";
 const BookTicketPage = () => {
   return (
     <div>
-      <Navbar/>
-      <SelectSession/>
-      <SelectSeat/>
+      <SelectSession />
+      <SelectSeat />
     </div>
-  )
-}
+  );
+};
 
-export default BookTicketPage
+export default BookTicketPage;

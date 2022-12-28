@@ -2,7 +2,7 @@ import React from "react";
 import "./mainpage-card-slider.css";
 import { useNavigate } from "react-router-dom";
 
-const Card = (props) => {
+const FilmCard = (props) => {
   const navigate = useNavigate();
   const toMovie = (movie) => {
     if (movie === undefined) return;
@@ -44,4 +44,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default FilmCard;

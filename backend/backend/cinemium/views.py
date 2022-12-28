@@ -1,7 +1,14 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from . import serializers as s
 from .import models as m
+from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
+
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
 # Create your views here.
 
 class MovieView(viewsets.ModelViewSet):
@@ -23,10 +30,6 @@ class CinemaSeatView(viewsets.ModelViewSet):
 class CinemaView(viewsets.ModelViewSet):
     serializer_class = s.CinemaSerializer
     queryset = m.Cinema.objects.all()
-
-class UserView(viewsets.ModelViewSet):
-    serializer_class = s.UserSerializer
-    queryset = m.User.objects.all()
 
 class TicketView(viewsets.ModelViewSet):
     serializer_class = s.TicketSerializer
@@ -50,3 +53,32 @@ class ShowSeatView(viewsets.ModelViewSet):
 
 
 
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super().get_token(user)
+
+        # Add custom claims
+        token['username'] = user.username
+        # ...
+
+        return token
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
+
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getTickets(request):
+    user = request.user
+    tickets = user.ticket_set.all()
+    serializer = s.TicketSerializer(tickets, many=True)
+    return Response(serializer.data)
+
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    permission_classes = (AllowAny,)
+    serializer_class = s.RegisterSerializer

@@ -27,10 +27,10 @@ const MainpageCardSlider = (props) => {
       <div class="carousel-inner ">
         {[...Array(Math.ceil(movieList.length / 5))].map(function (x, i) {
           return (
-            <div class="carousel-item active">
+            <div key={i} class="carousel-item active">
               <div class="cards-wrapper">
                 {movieList.slice(5 * i, 5 * (i + 1)).map(function (movie, id) {
-                  return <FilmCard movie={movie} />;
+                  return <FilmCard key={id} movie={movie} />;
                 })}
               </div>
             </div>
