@@ -9,6 +9,9 @@ import MovieDetailPage from "./components/movie-details/MovieDetailPage.jsx";
 import Login from "./components/login-page/Login";
 import Signup from "./components/signup-page/Signup";
 import BookTicketPage from "./components/booking/BookTicketPage";
+
+import PaymentPage from "./components/payment/PaymentPage";
+
 export default function App() {
   const helmetContext = {};
   return (
@@ -20,6 +23,8 @@ export default function App() {
           <Route path="log-in" element={<Login />} />
           <Route path="sign-up" element={<Signup />} />
           <Route path="/film-details/film-name/book-ticket" element={<BookTicketPage />} />
+          <Route path="/film-details/film-name/book-ticket/payment" element={<PaymentPage />} />
+       
         </Routes>
       </BrowserRouter>
     </HelmetProvider>

@@ -1,8 +1,12 @@
 import React from "react";
 import Seat from "./Seat";
 import "./select-seat.css";
-
+import {useNavigate } from "react-router-dom";
 const SelectSeat = () => {
+  const navigate = useNavigate();
+  const toPaymentPage = () => {
+    navigate("/film-details/film-name/book-ticket/payment");
+  };
   const rows = [];
   const cols = [];
   const seats = [];
@@ -19,7 +23,6 @@ const SelectSeat = () => {
     }
   }
 
-
   return (
     <div>
       {" "}
@@ -33,7 +36,7 @@ const SelectSeat = () => {
           />
         ))}
       </div>
-      <button type="button" className="btn btn-primary get-ticket">
+      <button type="button" className="btn btn-primary get-ticket " onClick={toPaymentPage}>
         Get Ticket
       </button>
     </div>

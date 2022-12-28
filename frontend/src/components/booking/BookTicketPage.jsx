@@ -1,6 +1,5 @@
 import Navbar from "../navbar/Navbar"
 import SelectSession from "./SelectSession"
-
 const BookTicketPage = () => {
   return (
     <div>
@@ -11,4 +10,4 @@ const BookTicketPage = () => {
   )
 }
 
-export default BookTicketPage
+export default BookTicketPage;

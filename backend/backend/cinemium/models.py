@@ -20,7 +20,7 @@ class Cinema(models.Model):
 
 
 class CinemaHall(models.Model):
-    cinema_hallid = models.IntegerField(db_column='cinema_hallID', primary_key=True)  # Field name made lowercase.
+    cinema_hallid = models.CharField(db_column='cinema_hallID',max_length=45, primary_key=True)  # Field name made lowercase.
     total_seats = models.IntegerField(blank=True, null=True)
     cinemaid = models.ForeignKey(Cinema, models.DO_NOTHING, db_column='cinemaID', blank=True, null=True)  # Field name made lowercase.
 
@@ -29,11 +29,11 @@ class CinemaHall(models.Model):
 
 
 class CinemaSeat(models.Model):
-    cinema_seatid = models.IntegerField(db_column='cinema_seatID', primary_key=True)  # Field name made lowercase.
-    type = models.CharField(db_column='Type', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    cinema_seatid = models.CharField(db_column='cinema_seatID',max_length=45 ,primary_key=True)
+    status = models.CharField(db_column='status', max_length=45, blank=True, null=True)  # Field name made lowercase.
     cinema_hallid = models.ForeignKey(CinemaHall, models.DO_NOTHING, db_column='cinema_hallID', blank=True, null=True)  # Field name made lowercase.
-    row_no = models.IntegerField(blank=True, null=True)
-    col_no = models.IntegerField(blank=True, null=True)
+    row_no = models.CharField(blank=True, max_length=45, null=True)
+    col_no = models.CharField(blank=True,max_length=45, null=True)
 
     class Meta:
         db_table = 'cinema_seat'
