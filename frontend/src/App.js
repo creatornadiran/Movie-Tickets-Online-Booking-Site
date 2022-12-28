@@ -9,18 +9,26 @@ import MovieDetailPage from "./components/movie-details/MovieDetailPage.jsx";
 import Login from "./components/login-page/Login";
 import Signup from "./components/signup-page/Signup";
 import BookTicketPage from "./components/booking/BookTicketPage";
+import Navbar from "./components/navbar/Navbar";
+import { AuthProvider } from "./context/AuthContext";
 export default function App() {
   const helmetContext = {};
   return (
     <HelmetProvider context={helmetContext}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Mainpage />} />
-          <Route path="film-details/*" element={<MovieDetailPage />} />
-          <Route path="log-in" element={<Login />} />
-          <Route path="sign-up" element={<Signup />} />
-          <Route path="/film-details/film-name/book-ticket" element={<BookTicketPage />} />
-        </Routes>
+        <AuthProvider>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Mainpage />} />
+            <Route path="film-details/*" element={<MovieDetailPage />} />
+            <Route path="log-in" element={<Login />} />
+            <Route path="sign-up" element={<Signup />} />
+            <Route
+              path="/film-details/film-name/book-ticket"
+              element={<BookTicketPage />}
+            />
+          </Routes>
+        </AuthProvider>
       </BrowserRouter>
     </HelmetProvider>
   );

@@ -1,8 +1,12 @@
 import logo from "../../assets/images/logo.png";
 import "./Navbar.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 import { FaHome } from "react-icons/fa";
 const Navbar = () => {
+  let { user, logoutUser } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const toLogin = () => {
     navigate("/log-in");
@@ -17,20 +21,35 @@ const Navbar = () => {
   return (
     <nav className="navbar my-navbar">
       <div className="container-fluid">
-        <button
-          className="btn btn-outline-success "
-          type="submit"
-          onClick={toLogin}
-        >
-          Log In
-        </button>
-        <button
-          className="btn btn-outline-success signIn "
-          type="submit"
-          onClick={toSignup}
-        >
-          Sign Up
-        </button>
+        {user ? (
+          <div>
+            <button
+              className="btn btn-outline-success "
+              type="submit"
+              onClick={logoutUser}
+            >
+              Log Out
+            </button>
+          </div>
+        ) : (
+          <div>
+            <button
+              className="btn btn-outline-success "
+              type="submit"
+              onClick={toLogin}
+            >
+              Log In
+            </button>
+            <button
+              className="btn btn-outline-success signIn "
+              type="submit"
+              onClick={toSignup}
+            >
+              Sign Up
+            </button>
+          </div>
+        )}
+        {user && <p>Hello {user.username}</p>}
         <img src={logo} alt="Logo" className="nav--icon" />
         <div className="iconn">
           <FaHome size={30} color="#373e98" onClick={toHome} />
