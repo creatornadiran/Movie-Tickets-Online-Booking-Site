@@ -6,6 +6,7 @@ const BookTicketPage = () => {
     <div>
       <SelectSession />
       <SelectSeat />
+
     </div>
   );
 };

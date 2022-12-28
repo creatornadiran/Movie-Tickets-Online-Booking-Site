@@ -1,0 +1,10 @@
+.cardd{
+    width: 880px;
+    height: 250px;
+    margin-left: 60vh;
+    margin-top: 10vh;
+   color: #373e98;
+}
+.ticket-text{
+    font-family: "Lucida Console", "Courier New", monospace;
+}
