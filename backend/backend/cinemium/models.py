@@ -1,12 +1,5 @@
-# This is an auto-generated Django model module.
-# You'll have to do the following manually to clean this up:
-#   * Rearrange models' order
-#   * Make sure each model has one field with primary_key=True
-#   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
-# Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
-
+from django.contrib.auth.models import User
 
 class Cinema(models.Model):
     cinemaid = models.IntegerField(db_column='cinemaID', primary_key=True)  # Field name made lowercase.
@@ -61,6 +54,7 @@ class Movie(models.Model):
     about = models.CharField(db_column='About', max_length=1024, blank=True, null=True)  # Field name made lowercase.
     score = models.FloatField(db_column='Score',null=True, blank=True, default=None)
     intheatre = models.BooleanField(db_column='InTheatre', default=True)
+    age = models.IntegerField(db_column='Age', default=True)
     class Meta:
         db_table = 'movie'
 
@@ -105,18 +99,8 @@ class Ticket(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
     showid = models.ForeignKey(Show, models.DO_NOTHING, db_column='showID', blank=True, null=True)  # Field name made lowercase.
     show_seatid = models.ForeignKey(ShowSeat, models.DO_NOTHING, db_column='show_seatID', blank=True, null=True)  # Field name made lowercase.
-    userid = models.ForeignKey('User', models.DO_NOTHING, db_column='userID', blank=True, null=True)  # Field name made lowercase.
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     class Meta:
         db_table = 'ticket'
 
-
-class User(models.Model):
-    user_name = models.IntegerField(primary_key=True)
-    password = models.CharField(max_length=45, blank=True, null=True)
-    name = models.CharField(max_length=45, blank=True, null=True)
-    email = models.CharField(max_length=45, blank=True, null=True)
-    phone = models.CharField(max_length=45, blank=True, null=True)
-
-    class Meta:
-        db_table = 'user'

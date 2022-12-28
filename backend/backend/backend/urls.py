@@ -18,6 +18,10 @@ from django.urls import path, include
 from rest_framework import routers
 from cinemium import views as v
 
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
+)
+
 router = routers.DefaultRouter()
 router.register(r'Movies', v.MovieView)
 router.register(r'MovieComingSoon', v.MovieComingSoonView)
@@ -27,12 +31,18 @@ router.register(r'Cinemas', v.CinemaView)
 router.register(r'Payments', v.PaymentView)
 router.register(r'ShowSeats', v.ShowSeatView)
 router.register(r'DiscountCoupons', v.DiscountCouponView)
-router.register(r'UserViews', v.UserView)
 router.register(r'TicketViews', v.TicketView)
 router.register(r'ShowViews', v.ShowView)
+
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
+
+    path(r'Tickets/', v.getTickets),
+    path(r'token/', v.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path(r'token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path(r'register/', v.RegisterView.as_view(), name='auth_register'),
 ]
 
