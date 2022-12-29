@@ -11,11 +11,12 @@ const Login = () => {
   const { loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="logindiv">
+      <h6>Welcome!</h6>
       <form onSubmit={loginUser}>
-        <input type="text" name="username" placeholder="Enter Username" />
-        <input type="password" name="password" placeholder="Enter Password" />
-        <input className="btn btn-success w-100" type="submit" value="submit" />
+        <input class="form-control formm" type="text" name="username" placeholder="Enter Username" />
+        <input class="form-control formm" type="password" name="password" placeholder="Enter Password" />
+        <input className="btn btn-success form-control formm" type="submit" value="submit" />
       </form>
     </div>
   );

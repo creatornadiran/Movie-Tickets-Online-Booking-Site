@@ -16,29 +16,22 @@ h1 {
     font-size: 24px;
     font-weight: var(--base-text-weight-light, 300);
     letter-spacing: -0.5px;
+   
+
  
 }
+.login h6,h6{
+  font-size: 24px;
+    font-weight: var(--base-text-weight-light, 300);
+    letter-spacing: -0.5px;
+    margin-left: 80vh;
 
-
-.login form {
-  font-size: 20px;
 }
 
-.login form .form-group {
-  margin-bottom: 12px;
+.logindiv{
+  margin-top: 10vh;
 }
 
-.login form input[type="submit"] {
-  font-size: 20px;
-  margin-top: 15px;
-}
-.form-check {
-    display: block;
-    min-height: 1.5rem;
-    padding-left: 1.5em;
-    margin-bottom: .525rem;
-    margin-top: .525rem;
-}
 .nav--iconn {
     display: block;
     margin-left: auto;
@@ -46,4 +39,9 @@ h1 {
     width: 40%;
     margin-top: 1vh;
     margin-bottom: 2vh;
+}
+.formm{
+  width: 40vh;
+  margin-left: 70vh;
+  margin-top: 1vh;
 }

@@ -25,9 +25,7 @@ nav {
   border-width: 0.00001cm;
   border-color: lightgrey;
 }
-.camp-nav {
-  height: 25vh;
-}
+
 .my-button {
   padding-right: 3vh;
 }
@@ -40,24 +38,23 @@ nav {
   font-style: oblique;
   padding-left: 5px;
 }
-.campaigns {
-  height: 30vh;
-}
+
 .prev-button {
   background-color: #2a2a2a;
   position: absolute;
-  left: -5px;
+  left: 0px;
 }
 
 .next-button {
   background-color: #2a2a2a;
   position: absolute;
-  right: -5px;
+  right: 0px;
 }
 
-.signIn {
+.signUp {
   position: absolute;
   left: 95px;
+  margin-top: -47px;
 }
 .btn-outline-success {
   display: flex;

@@ -34,14 +34,14 @@ const Navbar = () => {
         ) : (
           <div>
             <button
-              className="btn btn-outline-success "
+              className="btn  btn-outline-success "
               type="submit"
               onClick={toLogin}
             >
               Log In
             </button>
             <button
-              className="btn btn-outline-success signIn "
+              className="btn btn-outline-success signUp "
               type="submit"
               onClick={toSignup}
             >

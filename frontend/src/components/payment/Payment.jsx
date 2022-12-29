@@ -3,7 +3,7 @@ import "./payment.css";
 const Payment = () => {
   return (
     <div>
-      <div class="card">
+      <div class="card cardd">
         <img
           src="https://img.freepik.com/premium-vector/vector-drawing-cinema-ticket-cinema-ticket-icon_606226-42.jpg?w=2000"
           class="card-img-top ticket-png"

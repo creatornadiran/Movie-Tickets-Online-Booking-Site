@@ -1,4 +1,5 @@
 import slide1 from "../../assets/images/slide1.png";
+import "./mainpage-card-slider.css";
 const campaigns = () => {
   return (
     <div
@@ -17,13 +18,13 @@ const campaigns = () => {
         ></button>
         <button
           type="button"
-          data-bs-target="#carouselExampleIndicators"
+          data-bs-target="#carouselExampleIndicators "
           data-bs-slide-to="1"
           aria-label="Slide 2"
         ></button>
         <button
           type="button"
-          data-bs-target="#carouselExampleIndicators"
+          data-bs-target="#carouselExampleIndicators "
           data-bs-slide-to="2"
           aria-label="Slide 3"
         ></button>

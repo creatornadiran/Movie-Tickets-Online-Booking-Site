@@ -104,6 +104,7 @@ const SelectSession = () => {
             Please select movie session
           </option>
         </select>
+     
         <divv>
           <FaCheckCircle
             className="tick"
