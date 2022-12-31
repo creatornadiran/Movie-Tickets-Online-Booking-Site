@@ -14,8 +14,8 @@ const Login = () => {
     <div className="logindiv">
       <h6>Welcome!</h6>
       <form onSubmit={loginUser}>
-        <input class="form-control formm" type="text" name="username" placeholder="Enter Username" />
-        <input class="form-control formm" type="password" name="password" placeholder="Enter Password" />
+        <input className="form-control formm" type="text" name="username" placeholder="Enter Username" />
+        <input className="form-control formm" type="password" name="password" placeholder="Enter Password" />
         <input className="btn btn-success form-control formm" type="submit" value="submit" />
       </form>
     </div>

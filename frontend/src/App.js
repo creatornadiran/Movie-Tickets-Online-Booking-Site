@@ -12,6 +12,7 @@ import BookTicketPage from "./components/booking/BookTicketPage";
 import PaymentPage from "./components/payment/PaymentPage";
 import Navbar from "./components/navbar/Navbar";
 import { AuthProvider } from "./context/AuthContext";
+import AdminPage from "./components/admin-page/AdminPage";
 export default function App() {
   const helmetContext = {};
   return (
@@ -29,6 +30,7 @@ export default function App() {
               element={<BookTicketPage />}
             />
             <Route path="/film-details/film-name/book-ticket/payment" element={<PaymentPage />} />
+            <Route path="admin-page" element={<AdminPage />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

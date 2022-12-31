@@ -18,6 +18,9 @@ const Navbar = () => {
   const toHome = () => {
     navigate("/");
   };
+  const toAdminPage = () => {
+    navigate("/admin-page");
+  };
   return (
     <nav className="navbar my-navbar">
       <div className="container-fluid">
@@ -46,6 +49,13 @@ const Navbar = () => {
               onClick={toSignup}
             >
               Sign Up
+            </button>
+            <button
+              className="btn btn-outline-success admin "
+              type="submit"
+              onClick={toAdminPage}
+            >
+             Admin
             </button>
           </div>
         )}

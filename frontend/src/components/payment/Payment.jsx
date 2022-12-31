@@ -3,14 +3,14 @@ import "./payment.css";
 const Payment = () => {
   return (
     <div>
-      <div class="card cardd">
+      <div className="card cardd">
         <img
           src="https://img.freepik.com/premium-vector/vector-drawing-cinema-ticket-cinema-ticket-icon_606226-42.jpg?w=2000"
-          class="card-img-top ticket-png"
+          className="card-img-top ticket-png"
           alt="..."
         />
-        <div class="card-body">
-          <p class="card-text ticket-text">
+        <div className="card-body">
+          <p className="card-text ticket-text">
          <p>Your ticket is here, Have a good time! </p> 
           <p>Film Name: aaaa</p>
           <p>Session: xxxx</p>
