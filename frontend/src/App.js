@@ -29,7 +29,10 @@ export default function App() {
               path="/film-details/film-name/book-ticket"
               element={<BookTicketPage />}
             />
-            <Route path="/film-details/film-name/book-ticket/payment" element={<PaymentPage />} />
+            <Route
+              path="/film-details/film-name/book-ticket/payment"
+              element={<PaymentPage />}
+            />
             <Route path="admin-page" element={<AdminPage />} />
           </Routes>
         </AuthProvider>
