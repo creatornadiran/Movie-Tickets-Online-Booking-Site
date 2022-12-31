@@ -37,7 +37,7 @@ const Signup = () => {
         <p>Please fill in this form to create an account!</p>
         <hr />
         <p className="error-text">{errorText}</p>
-        <label form="username">Userame:</label>
+        <label form="username">Username:</label>
         <br />
         <input
           type="text"
