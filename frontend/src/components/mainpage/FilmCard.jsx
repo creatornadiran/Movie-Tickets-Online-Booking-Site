@@ -21,21 +21,21 @@ const FilmCard = (props) => {
     });
   };
   return (
-    <div class="card d-none d-md-block">
+    <div className="card d-none d-md-block">
       <img
         src={require("../../assets/images/posters/" +
           props.movie.poster +
           ".jpg")}
         alt="Slide"
-        class="card-img-top"
+        className="card-img-top"
       />
-      <div class="card-body">
-        <h5 class="card-title">{props.movie.name}</h5>
+      <div className="card-body">
+        <h5 className="card-title">{props.movie.name}</h5>
         <a
           onClick={() => {
             toMovie(props.movie);
           }}
-          class="btn btn-primary"
+          className="btn btn-primary"
         >
           Go somewhere
         </a>

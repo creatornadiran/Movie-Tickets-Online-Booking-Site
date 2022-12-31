@@ -1,0 +1,10 @@
+.admin-menu{
+  margin-left: 20vh;
+  margin-top: -5vh;
+  
+}
+.admin-menu-options{
+    color:#f16775
+    ;
+    --bs-nav-link-hover-color:black;
+}

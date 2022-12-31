@@ -13,7 +13,7 @@ class Cinema(models.Model):
 
 
 class CinemaHall(models.Model):
-    cinema_hallid = models.CharField(db_column='cinema_hallID',max_length=45, primary_key=True)  # Field name made lowercase.
+    cinema_hallid = models.IntegerField(db_column='cinema_hallID', primary_key=True)  # Field name made lowercase.
     total_seats = models.IntegerField(blank=True, null=True)
     cinemaid = models.ForeignKey(Cinema, models.DO_NOTHING, db_column='cinemaID', blank=True, null=True)  # Field name made lowercase.
 
@@ -22,8 +22,8 @@ class CinemaHall(models.Model):
 
 
 class CinemaSeat(models.Model):
-    cinema_seatid = models.CharField(db_column='cinema_seatID',max_length=45 ,primary_key=True)
-    status = models.CharField(db_column='status', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    cinema_seatid = models.CharField(db_column='cinema_seatID',max_length=45 ,primary_key=True)  # Field name made lowercase.
+    status = models.CharField(db_column='status', max_length=45, blank=True, null=True)
     cinema_hallid = models.ForeignKey(CinemaHall, models.DO_NOTHING, db_column='cinema_hallID', blank=True, null=True)  # Field name made lowercase.
     row_no = models.CharField(blank=True, max_length=45, null=True)
     col_no = models.CharField(blank=True,max_length=45, null=True)
@@ -54,7 +54,6 @@ class Movie(models.Model):
     about = models.CharField(db_column='About', max_length=1024, blank=True, null=True)  # Field name made lowercase.
     score = models.FloatField(db_column='Score',null=True, blank=True, default=None)
     intheatre = models.BooleanField(db_column='InTheatre', default=True)
-    age = models.IntegerField(db_column='Age', default=True)
     class Meta:
         db_table = 'movie'
 

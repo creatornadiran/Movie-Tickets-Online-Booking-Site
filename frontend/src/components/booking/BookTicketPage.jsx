@@ -4,8 +4,9 @@ import SelectSeat from "./SelectSeat";
 const BookTicketPage = () => {
   return (
     <div>
-      <SelectSession />
-      <SelectSeat />
+      
+      <SelectSession/>
+     
 
     </div>
   );
