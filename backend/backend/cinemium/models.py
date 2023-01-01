@@ -28,16 +28,17 @@ class CinemaHall(models.Model):
 
 
 class CinemaSeat(models.Model):
-    cinema_seat_id = models.AutoField(primary_key=True)
+    cinema_seat_id = models.CharField(primary_key=True, max_length=45)
     is_booked = models.BooleanField(default=False)
     cinema_hall = models.ForeignKey(CinemaHall, on_delete=models.CASCADE)
     row_no = models.CharField(max_length=45)
     col_no = models.CharField(max_length=45)
     ticket_id = models.CharField(max_length=11, blank=True, null=True)
     class Meta:
-        constraints = [
-            models.CheckConstraint(check=models.Q(is_booked=True) & models.Q(ticket_id__isnull=False), name='ticket_id_not_null') #query
-        ]
+        models.CheckConstraint(
+            check=models.Q(is_booked=True, ticket_id__isnull=False) | models.Q(is_booked=False, ticket_id__isnull=True),
+            name='ticket_id_null_if_not_booked'
+        )
         db_table = 'cinema_seat'
 
 

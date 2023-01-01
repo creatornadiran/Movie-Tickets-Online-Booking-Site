@@ -3,18 +3,17 @@ import { useState } from "react";
 import "./seat.css";
 
  const Seat = (props) => {
-  const [color, setColor] = useState(props.status === "sold" ? "red" : "#373e98");
-  const [status, setStatus] = useState(props.status);
+  const [color, setColor] = useState(props.is_booked ? "red" : "#373e98");
+  const [status , setStatus] = useState(props.is_booked?1:0);
 
   const handleClick = () => {
-    if (props.status === "available") {
+    if (!props.is_booked) {
       setColor(color === "#373e98" ? "#fee36e" : "#373e98");
-      setStatus(status === "available" ? "selected" : "available");
+      setStatus(status === 0 ? 2 : 0);
     
       }
   };
-
-   console.log(props.cinema_seatid);
+  console.log(props);
   return (
     <div>
       <div className="seat">
