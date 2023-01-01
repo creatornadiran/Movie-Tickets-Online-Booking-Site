@@ -1,0 +1,20 @@
+.ticket-pngg{
+    width: 300px;
+    height: 150px;
+    margin-left: -60vh;
+}
+.ticket-list{
+    margin-left: 90vh;
+}
+.my-tickets{
+    font-family: Montserrat,sans-serif;
+   color:rgba(0, 0, 0, 0.882);
+    font-size: 25px;
+    margin-left: -50vh;
+    margin-top: 2vh;
+    
+}
+.ticket-info{
+    margin-top: -20vh;
+    margin-left: -10vh;
+}

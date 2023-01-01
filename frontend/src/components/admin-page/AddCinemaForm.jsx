@@ -1,14 +1,13 @@
 const AddCinemaForm = () => {
   return (
     <div>
-      <form>
-        <div className="form-group add-user-form">
+      <form className="admin-forms">
+        <div className="form-group">
           <label for="formGroupExampleInput">Enter cinema id</label>
           <input
             type="text"
             className="form-control"
             id="formGroupExampleInput"
-            placeholder="Example input"
           />
         </div>
         <div className="form-group">
@@ -17,7 +16,6 @@ const AddCinemaForm = () => {
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Another input"
           />
         </div>
         <div className="form-group">
@@ -28,7 +26,7 @@ const AddCinemaForm = () => {
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Another input"
+           
           />
         </div>
         <div className="form-group">
@@ -39,10 +37,10 @@ const AddCinemaForm = () => {
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Another input"
+          
           />
         </div>
-        <div className="form-group">
+        <div className="form-group ">
           <label for="formGroupExampleInput2">
             Enter the zipcode where the cinema is
           </label>
@@ -50,10 +48,13 @@ const AddCinemaForm = () => {
             type="text"
             className="form-control"
             id="formGroupExampleInput2"
-            placeholder="Another input"
+           
           />
         </div>
       </form>
+      <button className="btn btn-outline-success form-submit-button " type="submit">
+        Submit
+      </button>
     </div>
   );
 };

@@ -1,20 +1,21 @@
-.carousel-inner {
-  overflow: hidden;
-}
-.cards-wrapper {
-  display: flex;
-  justify-content: center;
+.wrapperr {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
 }
 .card img {
   max-width: 100%;
   max-height: 100%;
+}
+.active-items{
+  overflow: hidden;
+ 
 }
 .card {
   margin: 0 1.5em;
   box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
   border: none;
   border-radius: 10;
-  width: 300px; /* or whatever width you want. */
+  width: 255px; /* or whatever width you want. */
   max-width: 550px; /* or whatever width you want. */
   display: inline-block;
   height: 400px;
@@ -27,6 +28,7 @@
     height: 300px;
   }
 }
+
 
 .prev-button {
   background-color: #2a2a2a;

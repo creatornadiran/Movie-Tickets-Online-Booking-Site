@@ -24,14 +24,24 @@ const MainpageCardSlider = (props) => {
       className="carousel slide "
       data-ride="carousel"
     >
-      <div className="carousel-inner ">
+      <div className="carousel-inner">
         {[...Array(Math.ceil(movieList.length / 5))].map(function (x, i) {
           return (
-            <div key={i} className="carousel-item active">
-              <div className="cards-wrapper">
-                {movieList.slice(5 * i, 5 * (i + 1)).map(function (movie, id) {
-                  return <FilmCard key={id} movie={movie} />;
-                })}
+            <div
+              key={i}
+              className={i === 0 ? "carousel-item active" : "carousel-item"}
+            >
+              <div className="cards-wrapper wrapperr">
+                {movieList
+                  .slice(5 * i, 5 * (i + 1))
+                  .filter(
+                    (movie) =>
+                      movieList.indexOf(movie) >= 5 * i &&
+                      movieList.indexOf(movie) < 5 * (i + 1)
+                  )
+                  .map(function (movie, id) {
+                    return <FilmCard key={id} movie={movie} />;
+                  })}
               </div>
             </div>
           );

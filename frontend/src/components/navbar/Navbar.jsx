@@ -1,12 +1,13 @@
 import logo from "../../assets/images/logo.png";
 import "./Navbar.css";
 import { useContext } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { FaHome } from "react-icons/fa";
 const Navbar = () => {
   let { user, logoutUser } = useContext(AuthContext);
-
+ 
   const navigate = useNavigate();
   const toLogin = () => {
     navigate("/log-in");
@@ -21,11 +22,21 @@ const Navbar = () => {
   const toAdminPage = () => {
     navigate("/admin-page");
   };
+  const toTicketPage = () => {
+    navigate("/Tickets");
+  };
   return (
     <nav className="navbar my-navbar">
       <div className="container-fluid">
         {user ? (
           <div>
+            <button
+              className="btn btn-outline-success "
+              type="submit"
+              onClick={toTicketPage}
+            >
+              My Tickets
+            </button>
             <button
               className="btn btn-outline-success "
               type="submit"
@@ -55,7 +66,7 @@ const Navbar = () => {
               type="submit"
               onClick={toAdminPage}
             >
-             Admin
+              Admin
             </button>
           </div>
         )}
