@@ -23,11 +23,11 @@ const SelectSeat = () => {
       <div className="seats">
         {seats.map((seat) => (
           <Seat
-            cinema_seatid={seat.cinema_seatid}
-            status={seat.status}
+            cinema_seat_id={seat.cinema_seat_id}
+            is_booked={seat.is_booked}
             row_no={seat.row_no}
             col_no={seat.col_no}
-            cinema_hallID={seat.cinema_hallID}
+            cinema_hall_id={seat.cinema_hall}
           />
         ))}
       </div>
