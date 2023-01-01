@@ -1,27 +1,19 @@
+import React from "react";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import AuthContext from "../../context/AuthContext";
 import "./ticket.css";
+
 const Ticket = () => {
   let { user, logoutUser } = useContext(AuthContext);
   let { authTokens } = useContext(AuthContext);
-  let [tickets, setTickets] = useState([
-    {
-      ticket_id: 1234,
-      price: 50,
-      show_id: 1,
-      seat_id: "A1",
-      user: "X",
-    },
-    {
-      ticket_id: 1235,
-      price: 50,
-      show_id: 2,
-      seat_id: "A2",
-      user: "T",
-    },
-  ]);
+  let [tickets, setTickets] = useState([]);
+  React.useEffect(() => {
+    getTickets();
+  }, []);
 
   let getTickets = async () => {
     let response = await fetch("http://127.0.0.1:8000/Tickets/", {
@@ -54,8 +46,8 @@ const Ticket = () => {
             <div className="ticket-info">
               <div>Ticket ID: {ticket.ticket_id}</div>
               <div>Price: {ticket.price}</div>
-              <div>Show ID: {ticket.show_id}</div>
-              <div>Seat ID: {ticket.seat_id}</div>
+              <div>Show ID: {ticket.show}</div>
+
               <div>User: {ticket.user}</div>
               <p></p>
             </div>
