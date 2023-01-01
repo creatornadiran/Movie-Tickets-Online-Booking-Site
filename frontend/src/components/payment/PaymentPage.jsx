@@ -4,7 +4,6 @@ import Payment from "./Payment";
 const PaymentPage = () => {
   return (
     <div>
-        <Navbar/>
         <Payment/>
     </div>
   )

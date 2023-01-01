@@ -22,25 +22,9 @@ const Navbar = () => {
   const toAdminPage = () => {
     navigate("/admin-page");
   };
-
-  let getTickets = async () => {
-    let response = await fetch("http://127.0.0.1:8000/Tickets/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + String(authTokens.access),
-      },
-    });
-    let data = await response.json();
-
-    if (response.status === 200) {
-      setTickets(data);
-      console.log(data);
-    } else if (response.statusText === "Unauthorized") {
-      logoutUser();
-    }
+  const toTicketPage = () => {
+    navigate("/Tickets");
   };
-
   return (
     <nav className="navbar my-navbar">
       <div className="container-fluid">
@@ -49,7 +33,7 @@ const Navbar = () => {
             <button
               className="btn btn-outline-success "
               type="submit"
-              onClick={getTickets}
+              onClick={toTicketPage}
             >
               My Tickets
             </button>

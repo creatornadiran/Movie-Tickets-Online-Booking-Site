@@ -8,3 +8,15 @@
     ;
     --bs-nav-link-hover-color:black;
 }
+.selected {
+  color: black;
+}
+.admin-forms {
+    margin-left: 30vh;
+    margin-right: 30vh;
+    margin-bottom: 3vh;
+     font-family: "Lucida Console", "Courier New", monospace;
+}
+.form-submit-button {
+  margin-left: 30vh;
+}

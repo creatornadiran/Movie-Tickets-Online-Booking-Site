@@ -1,0 +1,33 @@
+.padding{
+    padding:5rem !important;
+    margin-left:300px;
+}
+.payment {
+   width: 50vh;
+   margin-left: 30vh;
+} 
+
+
+.payment-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+}
+
+.payment-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: #f0f3f5;
+    border-bottom: 1px solid #c8ced3;
+}
+
+.payment-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+}
+
+.control-formm:focus {
+    color: #5c6873;
+    background-color: #fff;
+    border-color: #c8ced3 !important;
+    outline: 0;
+    box-shadow: 0 0 0 #F44336;
+}
