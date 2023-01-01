@@ -29,8 +29,6 @@ router.register(r'CinemaHalls', v.CinemaHallView)
 router.register(r'CinemaSeats', v.CinemaSeatView)
 router.register(r'Cinemas', v.CinemaView)
 router.register(r'Payments', v.PaymentView)
-router.register(r'ShowSeats', v.ShowSeatView)
-router.register(r'DiscountCoupons', v.DiscountCouponView)
 router.register(r'TicketViews', v.TicketView)
 router.register(r'ShowViews', v.ShowView)
 

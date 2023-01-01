@@ -13,11 +13,11 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 class MovieView(viewsets.ModelViewSet):
     serializer_class = s.MovieSerializer
-    queryset = m.Movie.objects.filter(intheatre=True)
+    queryset = m.Movie.objects.filter(in_theatre=True)
 
 class MovieComingSoonView(viewsets.ModelViewSet):
     serializer_class = s.MovieSerializer
-    queryset = m.Movie.objects.filter(intheatre=False)
+    queryset = m.Movie.objects.filter(in_theatre=False)
 
 class CinemaHallView(viewsets.ModelViewSet):
     serializer_class = s.CinemaHallSerializer
@@ -42,14 +42,6 @@ class ShowView(viewsets.ModelViewSet):
 class PaymentView(viewsets.ModelViewSet):
     serializer_class = s.PaymentSerializer
     queryset = m.Payment.objects.all()
-
-class DiscountCouponView(viewsets.ModelViewSet):
-    serializer_class = s.DiscountCouponSerializer
-    queryset = m.DiscountCoupon.objects.all()
-
-class ShowSeatView(viewsets.ModelViewSet):
-    serializer_class = s.ShowSeatSerializer
-    queryset = m.ShowSeat.objects.all()
 
 
 
