@@ -75,7 +75,7 @@ class RegisterView(generics.CreateAPIView):
 
 @api_view(['GET'])
 def getShows(request, cinema_id, movie_day):
-    shows = m.CinemaHall.objects.raw('SELECT * FROM myapp_cinemahall WHERE cinema_hall_id = %s AND movie_id = %s', [cinema_id])
+    shows = m.Show.objects.raw('SELECT * FROM cinemium.show WHERE cinema_hall_id IN (SELECT cinema_hall_id FROM cinema_hall WHERE cinema_id == %s) AND movie_id IN (SELECT movie_id FROM show WHERE DATE(%s)=DATE(show.date))', [cinema_id, movie_day])
     serializer = s.ShowSerializer(shows, many=True)
     return Response(serializer.data)
 
