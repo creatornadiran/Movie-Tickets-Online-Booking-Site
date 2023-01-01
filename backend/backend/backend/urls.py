@@ -37,7 +37,7 @@ router.register(r'ShowViews', v.ShowView)
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
-
+    path(r'Shows/', v.getShows),
     path(r'Tickets/', v.getTickets),
     path(r'token/', v.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path(r'token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
