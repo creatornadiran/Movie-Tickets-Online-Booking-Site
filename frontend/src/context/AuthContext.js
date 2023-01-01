@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("authTokens"))
       : null
   );
+  console.log(authTokens);
   let [user, setUser] = useState(() =>
     localStorage.getItem("authTokens")
       ? jwt_decode(localStorage.getItem("authTokens"))
@@ -83,10 +84,6 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    if (loading) {
-      updateToken();
-    }
-
     let fourMinutes = 1000 * 60 * 4;
 
     let interval = setInterval(() => {
@@ -98,8 +95,6 @@ export const AuthProvider = ({ children }) => {
   }, [authTokens, loading]);
 
   return (
-    <AuthContext.Provider value={contextData}>
-      {loading ? null : children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={contextData}>{children}</AuthContext.Provider>
   );
 };

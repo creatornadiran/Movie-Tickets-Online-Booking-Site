@@ -17,6 +17,7 @@ const FilmCard = (props) => {
         actors: movie.actors,
         duration: movie.duration,
         director: movie.director,
+        in_theatre: movie.in_theatre,
       },
     });
   };

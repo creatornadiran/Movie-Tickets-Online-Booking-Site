@@ -1,23 +1,22 @@
 from django.shortcuts import render
-from rest_framework import viewsets, generics
 from . import serializers as s
 from .import models as m
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, update_last_login
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny
-
+from rest_framework import viewsets, generics, status
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 # Create your views here.
 
 class MovieView(viewsets.ModelViewSet):
     serializer_class = s.MovieSerializer
-    queryset = m.Movie.objects.filter(intheatre=True)
+    queryset = m.Movie.objects.filter(in_theatre=True)
 
 class MovieComingSoonView(viewsets.ModelViewSet):
     serializer_class = s.MovieSerializer
-    queryset = m.Movie.objects.filter(intheatre=False)
+    queryset = m.Movie.objects.filter(in_theatre=False)
 
 class CinemaHallView(viewsets.ModelViewSet):
     serializer_class = s.CinemaHallSerializer
@@ -43,25 +42,16 @@ class PaymentView(viewsets.ModelViewSet):
     serializer_class = s.PaymentSerializer
     queryset = m.Payment.objects.all()
 
-class DiscountCouponView(viewsets.ModelViewSet):
-    serializer_class = s.DiscountCouponSerializer
-    queryset = m.DiscountCoupon.objects.all()
-
-class ShowSeatView(viewsets.ModelViewSet):
-    serializer_class = s.ShowSeatSerializer
-    queryset = m.ShowSeat.objects.all()
-
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
-
+        update_last_login(None, user)
         # Add custom claims
         token['username'] = user.username
         # ...
-
         return token
 
 
@@ -82,3 +72,23 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = s.RegisterSerializer
+
+@api_view(['GET'])
+def getShows(request, cinema_id, movie_day):
+    shows = m.CinemaHall.objects.raw('SELECT * FROM myapp_cinemahall WHERE cinema_hall_id = %s AND movie_id = %s', [cinema_id])
+    serializer = s.ShowSerializer(shows, many=True)
+    return Response(serializer.data)
+
+@permission_classes([IsAuthenticated])
+@api_view(['POST'])
+def createTicket(request, total_price, seat_ids, show_id):
+    user = request.user
+    show = m.Show.objects.get(id=show_id)
+    ticket = m.Ticket(price=total_price, show=show, user=user)
+    ticket.save()
+    serializer = s.TicketSerializer(ticket)
+    seats = m.CinemaSeat.objects.filter(id__in=seat_ids)
+    for seat in seats:
+        seat.ticket_id = ticket.id
+        seat.save()
+    return Response(serializer.data, status=status.HTTP_201_CREATED)

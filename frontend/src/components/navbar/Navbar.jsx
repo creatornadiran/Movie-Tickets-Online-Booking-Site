@@ -1,13 +1,13 @@
 import logo from "../../assets/images/logo.png";
 import "./Navbar.css";
-import { useContext } from "react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import { FaHome } from "react-icons/fa";
 const Navbar = () => {
   let { user, logoutUser } = useContext(AuthContext);
- 
+  let { authTokens } = useContext(AuthContext);
+  let [tickets, setTickets] = useState([]);
   const navigate = useNavigate();
   const toLogin = () => {
     navigate("/log-in");

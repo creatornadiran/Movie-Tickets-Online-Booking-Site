@@ -29,8 +29,6 @@ router.register(r'CinemaHalls', v.CinemaHallView)
 router.register(r'CinemaSeats', v.CinemaSeatView)
 router.register(r'Cinemas', v.CinemaView)
 router.register(r'Payments', v.PaymentView)
-router.register(r'ShowSeats', v.ShowSeatView)
-router.register(r'DiscountCoupons', v.DiscountCouponView)
 router.register(r'TicketViews', v.TicketView)
 router.register(r'ShowViews', v.ShowView)
 
@@ -39,7 +37,7 @@ router.register(r'ShowViews', v.ShowView)
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
-
+    path(r'Shows/', v.getShows),
     path(r'Tickets/', v.getTickets),
     path(r'token/', v.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path(r'token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
