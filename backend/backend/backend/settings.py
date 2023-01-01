@@ -30,6 +30,11 @@ INSTALLED_APPS = [
     "rest_framework",
     'rest_framework_simplejwt.token_blacklist',
     "cinemium",
+    'django_crontab',
+]
+
+CRONJOBS = [
+     ('0 0 * * *', 'myapp.cron.check_movie_dates')
 ]
 
 REST_FRAMEWORK = {

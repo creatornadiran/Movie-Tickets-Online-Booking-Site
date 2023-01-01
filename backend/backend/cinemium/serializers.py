@@ -20,10 +20,6 @@ class CinemaSeatSerializer(serializers.ModelSerializer):
     class Meta:
         model = m.CinemaSeat
         fields = '__all__'
-class DiscountCouponSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = m.DiscountCoupon
-        fields = '__all__'
 class PaymentSerializer(serializers.ModelSerializer):
     class Meta:
         model = m.Payment
@@ -31,10 +27,6 @@ class PaymentSerializer(serializers.ModelSerializer):
 class ShowSerializer(serializers.ModelSerializer):
     class Meta:
         model = m.Show
-        fields = '__all__'
-class ShowSeatSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = m.ShowSeat
         fields = '__all__'
 class TicketSerializer(serializers.ModelSerializer):
     class Meta:
