@@ -11,6 +11,7 @@ const MovieDetailPage = () => {
         score={location.state.score}
         tags={location.state.tags}
         duration={location.state.duration}
+        in_theatre={location.state.in_theatre}
       />
       <AboutMovie
         about={location.state.about}
