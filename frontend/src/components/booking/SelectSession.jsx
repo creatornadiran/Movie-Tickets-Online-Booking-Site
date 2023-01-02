@@ -1,14 +1,28 @@
 import "./select-session.css";
 import { FaCheckCircle } from "react-icons/fa";
 import SelectSeat from "./SelectSeat";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 const SelectSession = () => {
   const location = useLocation();
+
+  function getHoursAndMinutes(dateString) {
+    console.log(dateString);
+    const date = new Date(dateString);
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    return `${hours}:${minutes}`;
+  }
+
   function nextSixDays() {
     const result = [];
     const today = new Date();
@@ -31,44 +45,65 @@ const SelectSession = () => {
     const d = new Date(date);
     return `${days[d.getDay()]} ${d.getDate()}`;
   }
-  const [categories, setCategories] = useState([]);
-  const [subcategories, setSubcategories] = useState([]);
-  const [items, setItems] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedSubcategory, setSelectedSubcategory] = useState("");
+  const [cinemas, setCinemas] = useState([]);
+  const [days, setDays] = useState([]);
+  const [sessions, setSessions] = useState([]);
+  const [seats, setSeats] = useState([]);
+  const [selectedCinema, setSelectedCinema] = useState("");
+  const [selectedDay, setSelectedDay] = useState("");
+  const [selectedSession, setSelectedSession] = useState("");
+  const [isSeatSelectionOpen, setIsSeatSelectionOpen] = useState(false);
 
   useEffect(() => {
     axios.get("/api/Cinemas").then((response) => {
-      setCategories(response.data);
+      setCinemas(response.data);
     });
   }, []);
 
   useEffect(() => {
-    setSubcategories(nextSixDays());
-  }, [selectedCategory]);
+    setDays(nextSixDays());
+  }, [selectedCinema]);
 
   useEffect(() => {
     axios
-      .get(
-        `/Shows/${selectedCategory}/${selectedSubcategory}/${location.state.id}`
-      )
+      .get(`/Shows/${selectedCinema}/${selectedDay}/${location.state.id}`)
       .then((response) => {
-        console.log(response.data);
-        setItems(response.data);
+        setSessions(response.data);
       });
-  }, [selectedSubcategory]);
+    {
+    }
+  }, [selectedDay, selectedCinema]);
 
-  const handleCategoryChange = (event) => {
-    setSelectedCategory(event.target.value);
+  useEffect(() => {
+    let hall_id = sessions[selectedSession]
+      ? sessions[selectedSession].cinema_hall
+      : "";
+    axios.get(`/Seats/${hall_id}`).then((response) => {
+      setSeats(response.data);
+    });
+  }, [selectedSession]);
+
+  const handleCinemaChange = (event) => {
+    setSelectedCinema(event.target.value);
+    setSelectedSession("");
+    setIsSeatSelectionOpen(false);
   };
 
-  const handleSubcategoryChange = (event) => {
-    setSelectedSubcategory(event.target.value);
+  const handleDayChange = (event) => {
+    setSelectedDay(event.target.value);
+    setSelectedSession("");
+    setIsSeatSelectionOpen(false);
   };
-  const [isSeatSelectionOpen, setIsSeatSelectionOpen] = useState(false);
+
+  const handleSessionChange = (event) => {
+    setSelectedSession(event.target.value);
+    setIsSeatSelectionOpen(false);
+  };
 
   const handleCheckCircleClick = () => {
-    setIsSeatSelectionOpen(true);
+    if (selectedSession !== "") {
+      setIsSeatSelectionOpen(true);
+    }
   };
 
   return (
@@ -78,15 +113,15 @@ const SelectSession = () => {
           Select cinema name:
           <select
             className="select-label"
-            value={selectedCategory}
-            onChange={handleCategoryChange}
+            value={selectedCinema}
+            onChange={handleCinemaChange}
           >
             <option value="" selected="selected">
-              Please select cinema
+              Select
             </option>
-            {categories.map((category) => (
-              <option key={category.name} value={category.cinema_id}>
-                {category.name}
+            {cinemas.map((cinema) => (
+              <option key={cinema.cinema_id} value={cinema.cinema_id}>
+                {cinema.name}
               </option>
             ))}
           </select>
@@ -96,15 +131,15 @@ const SelectSession = () => {
           Please select movie day:
           <select
             className="select-label"
-            value={selectedSubcategory}
-            onChange={handleSubcategoryChange}
+            value={selectedDay}
+            onChange={handleDayChange}
           >
             <option value="" selected="selected">
-              Please select day
+              Select
             </option>
-            {subcategories.map((subcategory) => (
-              <option key={subcategory} value={subcategory}>
-                {getDayName(subcategory)}
+            {days.map((day) => (
+              <option key={day} value={day}>
+                {getDayName(day)}
               </option>
             ))}
           </select>
@@ -112,13 +147,19 @@ const SelectSession = () => {
         <br />
         <label className="select-label">
           Please select movie session:
-          <select className="select-label">
+          <select
+            className="select-label"
+            value={selectedSession}
+            onChange={handleSessionChange}
+          >
             <option value="" selected="selected">
-              Please select cinema and day
+              Select
             </option>
-            {items.map((item) => (
-              <option key={item} value={item}>
-                {item.date}
+            {sessions.map((session, id) => (
+              <option key={session} value={id}>
+                {getHoursAndMinutes(session.date) +
+                  " Hall: " +
+                  session.cinema_hall}
               </option>
             ))}
           </select>
@@ -130,7 +171,13 @@ const SelectSession = () => {
             color="#f16775"
             onClick={handleCheckCircleClick}
           />
-          {isSeatSelectionOpen && <SelectSeat />}
+          {isSeatSelectionOpen && (
+            <SelectSeat
+              seats={seats}
+              show={sessions[selectedSession]}
+              movie_name={location.state.movie_name}
+            />
+          )}
         </divv>
       </form>
     </div>

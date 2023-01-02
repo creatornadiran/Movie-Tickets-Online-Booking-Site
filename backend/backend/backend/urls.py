@@ -38,6 +38,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(router.urls)),
     path('Shows/<int:cinema_id>/<str:movie_day>/<int:movie_id>', v.getShows, name='get_shows'),
+    path('Seats/<int:cinema_hall_id>', v.getSeats, name='get_seats'),
+    path('CreateTicket/<int:total_price>/<str:seat_ids>/<int:show_id>', v.createTicket, name='create_ticket'),
     path(r'Tickets/', v.getTickets),
     path(r'token/', v.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path(r'token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),

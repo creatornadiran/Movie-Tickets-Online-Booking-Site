@@ -17,7 +17,11 @@ const AboutMovie = (props) => {
           {actorsList.map(function (name, id) {
             return (
               <li key={id}>
-                <ActorCard name={name} />
+                {id === 0 ? (
+                  <ActorCard name={name} director={true} />
+                ) : (
+                  <ActorCard name={name} director={false} />
+                )}
               </li>
             );
           })}
