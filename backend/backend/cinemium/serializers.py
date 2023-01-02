@@ -20,10 +20,6 @@ class CinemaSeatSerializer(serializers.ModelSerializer):
     class Meta:
         model = m.CinemaSeat
         fields = '__all__'
-class PaymentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = m.Payment
-        fields = '__all__'
 class ShowSerializer(serializers.ModelSerializer):
     class Meta:
         model = m.Show

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function DeleteHallForm(props) {
-  const [hallId, setHallId] = useState("");
+function DeleteShowForm(props) {
+  const [ShowId, setShowId] = useState("");
   const [isDeleted, setIsDeleted] = useState(false);
 
   function handleChange(event) {
-    setHallId(event.target.value);
+    setShowId(event.target.value);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
 
     axios
-      .delete(`/api/CinemaHalls/${hallId}/`)
+      .delete(`/api/ShowViews/${ShowId}/`)
       .then((response) => {
         console.log(response);
         setIsDeleted(true);
@@ -27,14 +27,14 @@ function DeleteHallForm(props) {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          Hall ID:
-          <input type="text" value={hallId} onChange={handleChange} />
+          Show ID:
+          <input type="text" value={ShowId} onChange={handleChange} />
         </label>
-        <button type="submit">Delete Hall</button>
+        <button type="submit">Delete Show</button>
       </form>
-      {isDeleted && <p>Hall successfully deleted!</p>}
+      {isDeleted && <p>Show successfully deleted!</p>}
     </div>
   );
 }
 
-export default DeleteHallForm;
+export default DeleteShowForm;
