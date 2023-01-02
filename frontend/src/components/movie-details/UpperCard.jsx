@@ -7,7 +7,7 @@ const UpperCard = (props) => {
   const toReservation = () => {
     navigate("/film-details/film-name/book-ticket", {
       state: {
-        id: props.id,
+        id: props.movie_id,
       },
     });
   };
