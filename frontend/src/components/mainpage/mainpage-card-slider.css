@@ -18,7 +18,7 @@
   width: 255px; /* or whatever width you want. */
   max-width: 550px; /* or whatever width you want. */
   display: inline-block;
-  height: 400px;
+  height: 420px;
   margin-bottom: 50px;
   --bs-card-inner-border-radius: calc(0);
 }
