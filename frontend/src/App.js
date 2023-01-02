@@ -8,7 +8,7 @@ import Mainpage from "./components/mainpage/Mainpage";
 import MovieDetailPage from "./components/movie-details/MovieDetailPage.jsx";
 import Login from "./components/login-page/Login";
 import Signup from "./components/signup-page/Signup";
-import BookTicketPage from "./components/booking/BookTicketPage";
+import SelectSession from "./components/booking/SelectSession";
 import PaymentPage from "./components/payment/PaymentPage";
 import Navbar from "./components/navbar/Navbar";
 import { AuthProvider } from "./context/AuthContext";
@@ -29,7 +29,7 @@ export default function App() {
             <Route path="sign-up" element={<Signup />} />
             <Route
               path="/film-details/film-name/book-ticket"
-              element={<BookTicketPage />}
+              element={<SelectSession />}
             />
             <Route
               path="/film-details/film-name/book-ticket/payment"

@@ -8,7 +8,7 @@ const FilmCard = (props) => {
     if (movie === undefined) return;
     navigate(`/film-details/${movie.name}`, {
       state: {
-        id: movie.id,
+        movie_id: movie.movie_id,
         name: movie.name,
         img: require("../../assets/images/posters/" + movie.poster + ".jpg"),
         score: movie.score,

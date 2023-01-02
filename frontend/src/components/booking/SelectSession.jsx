@@ -5,8 +5,10 @@ import { useState } from "react";
 import React from "react";
 import axios from "axios";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const SelectSession = () => {
+  const location = useLocation();
   function nextSixDays() {
     const result = [];
     const today = new Date();
@@ -46,9 +48,14 @@ const SelectSession = () => {
   }, [selectedCategory]);
 
   useEffect(() => {
-    axios.get(`/api/Cinemas=${selectedSubcategory}`).then((response) => {
-      setItems(response.data);
-    });
+    axios
+      .get(
+        `/Shows/${selectedCategory}/${selectedSubcategory}/${location.state.id}`
+      )
+      .then((response) => {
+        console.log(response.data);
+        setItems(response.data);
+      });
   }, [selectedSubcategory]);
 
   const handleCategoryChange = (event) => {
@@ -68,14 +75,17 @@ const SelectSession = () => {
     <div>
       <form className="form1" name="form1" id="form1" action="/action_page.php">
         <label className="select-label">
-        Select cinema name:
+          Select cinema name:
           <select
             className="select-label"
             value={selectedCategory}
             onChange={handleCategoryChange}
           >
+            <option value="" selected="selected">
+              Please select cinema
+            </option>
             {categories.map((category) => (
-              <option key={category.id} value={category.id}>
+              <option key={category.name} value={category.cinema_id}>
                 {category.name}
               </option>
             ))}
@@ -83,26 +93,32 @@ const SelectSession = () => {
         </label>
         <br />
         <label className="select-label">
-        Please select movie day:
+          Please select movie day:
           <select
             className="select-label"
             value={selectedSubcategory}
             onChange={handleSubcategoryChange}
           >
+            <option value="" selected="selected">
+              Please select day
+            </option>
             {subcategories.map((subcategory) => (
-              <option key={subcategory.id} value={subcategory.id}>
-                {subcategory.name}
+              <option key={subcategory} value={subcategory}>
+                {getDayName(subcategory)}
               </option>
             ))}
           </select>
         </label>
         <br />
         <label className="select-label">
-        Please select movie session:
+          Please select movie session:
           <select className="select-label">
+            <option value="" selected="selected">
+              Please select cinema and day
+            </option>
             {items.map((item) => (
-              <option key={item.id} value={item.id}>
-                {item.name}
+              <option key={item} value={item}>
+                {item.date}
               </option>
             ))}
           </select>
