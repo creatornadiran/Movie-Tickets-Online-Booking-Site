@@ -45,8 +45,7 @@ const SelectSeat = (props) => {
   };
   if (!seats) return null;
   return (
-    <div>
-      {" "}
+    <div >
       <div className="seats">
         {seats.map((seat) => (
           <Seat

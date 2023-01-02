@@ -1,13 +1,14 @@
 .seats {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
-  margin-left: 20vh;
-  margin-right: 30vh;
+  margin-left: -115vh;
+  margin-right: 5vh;
   margin-top: 10vh;
 }
 .get-ticket{
   background-color: #373e98;
-  margin-top: 10vh;
-  margin-left: 79vh;
+  margin-top: 5vh;
+  margin-left:-70vh;
+  width: 15vh;
 }
 .get-ticket:hover{background-color: #f16775;}
