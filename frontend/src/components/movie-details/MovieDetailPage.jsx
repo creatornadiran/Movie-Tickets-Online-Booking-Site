@@ -6,6 +6,7 @@ const MovieDetailPage = () => {
   return (
     <div>
       <UpperCard
+        id={location.state.id}
         name={location.state.name}
         img={location.state.img}
         score={location.state.score}
