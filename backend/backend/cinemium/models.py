@@ -80,12 +80,3 @@ class Ticket(models.Model):
         db_table = 'ticket'
 
 
-class Payment(models.Model):
-    payment_id = models.AutoField(primary_key=True)
-    payment_date = models.CharField(max_length=45, blank=True, null=True)
-    ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-
-    class Meta:
-        db_table = 'payment'
-

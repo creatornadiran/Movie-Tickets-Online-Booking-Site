@@ -10,7 +10,6 @@ const SelectSession = () => {
   const location = useLocation();
 
   function getHoursAndMinutes(dateString) {
-    console.log(dateString);
     const date = new Date(dateString);
     let hours = date.getHours();
     let minutes = date.getMinutes();

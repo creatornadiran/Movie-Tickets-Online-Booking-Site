@@ -28,10 +28,8 @@ router.register(r'MovieComingSoon', v.MovieComingSoonView)
 router.register(r'CinemaHalls', v.CinemaHallView)
 router.register(r'CinemaSeats', v.CinemaSeatView)
 router.register(r'Cinemas', v.CinemaView)
-router.register(r'Payments', v.PaymentView)
 router.register(r'TicketViews', v.TicketView)
 router.register(r'ShowViews', v.ShowView)
-
 
 
 urlpatterns = [

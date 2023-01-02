@@ -23,7 +23,7 @@ const SelectSeat = (props) => {
         },
       });
     } else {
-      navigate("/log-in");
+      navigate("/sign-up");
     }
   };
 

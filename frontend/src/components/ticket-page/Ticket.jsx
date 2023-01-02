@@ -13,6 +13,19 @@ const Ticket = () => {
   }, []);
 
   let getTickets = async () => {
+    function getHoursAndMinutes(dateString) {
+      const date = new Date(dateString);
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      if (hours < 10) {
+        hours = `0${hours}`;
+      }
+      if (minutes < 10) {
+        minutes = `0${minutes}`;
+      }
+      return `${hours}:${minutes}`;
+    }
+
     let response = await fetch("http://127.0.0.1:8000/Tickets/", {
       method: "GET",
       headers: {
@@ -44,8 +57,10 @@ const Ticket = () => {
               <div>Ticket ID: {ticket.ticket_id}</div>
               <div>Price: {ticket.price}</div>
               <div>Show ID: {ticket.show}</div>
-
-              <div>Purchase time: {ticket.purchase_time}</div>
+              <div>Seats: {ticket.seats}</div>
+              <div>
+                Purchase time: {getHoursAndMinutes(ticket.purchase_time)}
+              </div>
               <p></p>
             </div>
           </div>
