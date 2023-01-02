@@ -1,23 +1,34 @@
+import { useState } from "react";
+import axios from "axios";
 const AddCinemaHallForm = () => {
+  const [hall_size, setHall_size] = useState("");
+  const [cinema, setCinema] = useState("");
+  let handleSubmit = async (e) => {
+    e.preventDefault();
+    const data = {
+      hall_size: hall_size,
+      cinema: cinema,
+    };
+    axios
+      .post("http://127.0.0.1:8000/api/CinemaHalls/", data)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div>
-      <form className="admin-forms">
+      <form className="admin-forms" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="formGroupExampleInput">Enter cinema hall id</label>
+          <label for="formGroupExampleInput2">Enter the hall size</label>
           <input
             type="text"
+            value={hall_size}
+            placeholder="Name"
+            onChange={(e) => setHall_size(e.target.value)}
             className="form-control"
-            id="formGroupExampleInput"
-          />
-        </div>
-        <div className="form-group">
-          <label for="formGroupExampleInput2">
-            Enter the total number of seats for the hall you want to add
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="formGroupExampleInput2"
           />
         </div>
         <div className="form-group">
@@ -27,14 +38,19 @@ const AddCinemaHallForm = () => {
           </label>
           <input
             type="text"
+            value={cinema}
+            placeholder="Name"
+            onChange={(e) => setCinema(e.target.value)}
             className="form-control"
-            id="formGroupExampleInput2"
           />
         </div>
+        <button
+          className="btn btn-outline-success form-submit-button "
+          type="submit"
+        >
+          Submit
+        </button>
       </form>
-      <button className="btn btn-outline-success form-submit-button " type="submit">
-        Submit
-      </button>
     </div>
   );
 };
