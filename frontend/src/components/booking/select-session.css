@@ -1,20 +1,29 @@
-.button{
-    width: 260px;
-    height: 40px;
-    border-color: #373e98
-    ;
+.button {
+  width: 260px;
+  height: 40px;
+  border-color: #373e98;
 }
-.form1{
-    margin-top: 20px;
-    margin-left: 20vh;
+.form1 {
+  margin-top: 20px;
+  margin-left: 40vh;
+  display: flex;
 }
-.button:hover{background-color: #eacbce;}
-.atext{
-    font-family: "Lucida Console", "Courier New", monospace;
-    display: inline-block;
-    margin-left: 25px;
-    color: #373e98;
+.button:hover {
+  background-color: #eacbce;
 }
-.tick{
-    margin-left: 10px;
+.atext {
+  font-family: "Lucida Console", "Courier New", monospace;
+  display: inline-block;
+  margin-left: 25px;
+  color: #373e98;
+}
+.tick {
+  margin-left: 10px;
+  margin-top: 4vh;
+}
+.select-label {
+  width: 40vh;
+  height: 5vh;
+  margin-left: 1vh;
+ 
 }
