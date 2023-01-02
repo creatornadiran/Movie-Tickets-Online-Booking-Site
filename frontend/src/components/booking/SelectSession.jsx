@@ -10,6 +10,7 @@ const SelectSession = () => {
   const location = useLocation();
 
   function getHoursAndMinutes(dateString) {
+    console.log(dateString);
     const date = new Date(dateString);
     let hours = date.getHours();
     let minutes = date.getMinutes();
@@ -69,6 +70,8 @@ const SelectSession = () => {
       .then((response) => {
         setSessions(response.data);
       });
+    {
+    }
   }, [selectedDay, selectedCinema]);
 
   useEffect(() => {
