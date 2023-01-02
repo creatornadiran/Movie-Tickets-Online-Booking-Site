@@ -6,6 +6,19 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const TicketDetailPage = (props) => {
+  function getHoursAndMinutes(dateString) {
+    const date = new Date(dateString);
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    if (hours < 10) {
+      hours = `0${hours}`;
+    }
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+    return `${hours}:${minutes}`;
+  }
+
   function getSeatIds(seats) {
     return seats.map((seat) => seat.cinema_seat_id).join(", ");
   }
@@ -48,7 +61,7 @@ const TicketDetailPage = (props) => {
             {console.log(ticket)}
             <p>Your ticket is here, Have a good time! </p>
             <p>Movie Name: {location.state.movie_name}</p>
-            <p>Session: {location.state.show.show_id}</p>
+            <p>Session: {getHoursAndMinutes(location.state.show.date)}</p>
             <p>Seat IDs: {ticket ? ticket.seats : ""}</p>
             <p>Ticket ID: {ticket ? ticket.ticket_id : ""}</p>
           </p>
