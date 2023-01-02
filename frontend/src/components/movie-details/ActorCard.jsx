@@ -1,6 +1,6 @@
 import "./ActorCard.css";
 
-const ActorCard = ({ name }) => {
+const ActorCard = ({ name, director }) => {
   let imgname = name.replaceAll(" ", "").toLowerCase();
   return (
     <div class="actor-card">
@@ -10,7 +10,7 @@ const ActorCard = ({ name }) => {
         class="actor-card-image"
       ></img>
       <div class="actor-card-text">
-        <h2>{name}</h2>
+        <h2>{director ? name + " (Director)" : name}</h2>
       </div>
     </div>
   );

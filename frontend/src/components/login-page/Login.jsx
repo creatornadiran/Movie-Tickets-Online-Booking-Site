@@ -8,15 +8,31 @@ import { useNavigate } from "react-router-dom";
 const LOGIN_URL = "/auth";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { user, loginUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  return (
+  return user ? (
+    <h1>You are already logged in.</h1>
+  ) : (
     <div className="logindiv">
       <h6>Welcome!</h6>
       <form onSubmit={loginUser}>
-        <input className="form-control formm" type="text" name="username" placeholder="Enter Username" />
-        <input className="form-control formm" type="password" name="password" placeholder="Enter Password" />
-        <input className="btn btn-success form-control formm" type="submit" value="submit" />
+        <input
+          className="form-control formm"
+          type="text"
+          name="username"
+          placeholder="Enter Username"
+        />
+        <input
+          className="form-control formm"
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+        />
+        <input
+          className="btn btn-success form-control formm"
+          type="submit"
+          value="submit"
+        />
       </form>
     </div>
   );

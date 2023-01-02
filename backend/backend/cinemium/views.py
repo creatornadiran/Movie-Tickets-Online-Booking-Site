@@ -64,7 +64,7 @@ class MyTokenObtainPairView(TokenObtainPairView):
 @permission_classes([IsAuthenticated])
 def getTickets(request):
     user = request.user
-    tickets = user.ticket_set.all()
+    tickets = user.ticket_set.all() #query
     serializer = s.TicketSerializer(tickets, many=True)
     return Response(serializer.data)
 
@@ -79,16 +79,26 @@ def getShows(request, cinema_id, movie_day, movie_id):
     serializer = s.ShowSerializer(shows, many=True)
     return Response(serializer.data)
 
+@api_view(['GET'])
+def getSeats(request, cinema_hall_id):
+    seats = m.CinemaSeat.objects.raw('SELECT * FROM cinemium.cinema_seat WHERE cinema_hall_id = %s', [cinema_hall_id])
+    serializer = s.CinemaSeatSerializer(seats, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
-@api_view(['POST'])
 def createTicket(request, total_price, seat_ids, show_id):
     user = request.user
-    show = m.Show.objects.get(id=show_id)
-    ticket = m.Ticket(price=total_price, show=show, user=user)
+    seat_ids_to_uptade = seat_ids.split(", ")
+    for seat_id in seat_ids_to_uptade:
+        if seat_id == "": continue
+        seat = m.CinemaSeat.objects.get(pk=seat_id)
+        booked_shows_list = seat.booked_shows.split(", ")
+        if str(show_id) in booked_shows_list:
+            return Response({"error": "One or more of the specified seats are already booked for this show"}, status=status.HTTP_400_BAD_REQUEST)
+        seat.booked_shows = seat.booked_shows+", "+str(show_id)
+        seat.save()
+    ticket = m.Ticket(price=total_price, show_id=show_id, user_id=user.id, seats=seat_ids)
     ticket.save()
     serializer = s.TicketSerializer(ticket)
-    seats = m.CinemaSeat.objects.filter(id__in=seat_ids)
-    for seat in seats:
-        seat.ticket_id = ticket.id
-        seat.save()
     return Response(serializer.data, status=status.HTTP_201_CREATED)

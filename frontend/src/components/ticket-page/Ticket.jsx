@@ -1,9 +1,6 @@
 import React from "react";
-import { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
 import AuthContext from "../../context/AuthContext";
 import "./ticket.css";
 
@@ -48,7 +45,7 @@ const Ticket = () => {
               <div>Price: {ticket.price}</div>
               <div>Show ID: {ticket.show}</div>
 
-              <div>User: {ticket.user}</div>
+              <div>Purchase time: {ticket.purchase_time}</div>
               <p></p>
             </div>
           </div>
