@@ -38,7 +38,6 @@ export default function App() {
             <Route path="admin-page" element={<AdminPage />} />
             <Route path="/Tickets" element={<Ticket />} />
             <Route path="/ticket-detail" element={<TicketDetailPage />} />
-            
           </Routes>
         </AuthProvider>
       </BrowserRouter>

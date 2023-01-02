@@ -5,7 +5,11 @@ const UpperCard = (props) => {
   const tagList = props.tags.split(", ");
   const navigate = useNavigate();
   const toReservation = () => {
-    navigate("/film-details/film-name/book-ticket");
+    navigate("/film-details/film-name/book-ticket", {
+      state: {
+        id: props.id,
+      },
+    });
   };
   return (
     <div

@@ -7,6 +7,28 @@ import axios from "axios";
 import { useEffect } from "react";
 
 const SelectSession = () => {
+  function nextSixDays() {
+    const result = [];
+    const today = new Date();
+    for (let i = 0; i < 7; i++) {
+      result.push(today.toISOString().slice(0, 10));
+      today.setDate(today.getDate() + 1);
+    }
+    return result;
+  }
+  function getDayName(date) {
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const d = new Date(date);
+    return `${days[d.getDay()]} ${d.getDate()}`;
+  }
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
   const [items, setItems] = useState([]);
@@ -20,9 +42,7 @@ const SelectSession = () => {
   }, []);
 
   useEffect(() => {
-    axios.get(`/api/Cinemas=${selectedCategory}`).then((response) => {
-      setSubcategories(response.data);
-    });
+    setSubcategories(nextSixDays());
   }, [selectedCategory]);
 
   useEffect(() => {
