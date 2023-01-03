@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+
 class Cinema(models.Model):
     cinema_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=45)
@@ -31,6 +32,7 @@ class CinemaSeat(models.Model):
     cinema_hall = models.ForeignKey(CinemaHall, on_delete=models.CASCADE)
     row_no = models.CharField(max_length=45)
     col_no = models.CharField(max_length=45)
+
     class Meta:
         models.CheckConstraint(
             check=models.Q(is_booked=True, ticket_id__isnull=False) | models.Q(is_booked=False, ticket_id__isnull=True),
@@ -64,6 +66,7 @@ class Show(models.Model):
     cinema_hall = models.ForeignKey(CinemaHall, on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     show_price = models.DecimalField(max_digits=10, decimal_places=2)
+    
     class Meta:
         db_table = 'show'
 
@@ -80,3 +83,7 @@ class Ticket(models.Model):
         db_table = 'ticket'
 
 
+class Log(models.Model):
+    message = models.CharField(max_length=255)
+    level = models.CharField(max_length=20)
+    timestamp = models.DateTimeField(auto_now_add=True)

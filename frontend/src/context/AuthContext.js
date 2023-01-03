@@ -37,8 +37,10 @@ export const AuthProvider = ({ children }) => {
     let data = await response.json();
 
     if (response.status === 200) {
+      let userData = jwt_decode(data.access);
+      userData.is_superuser = userData.is_superuser || false;
       setAuthTokens(data);
-      setUser(jwt_decode(data.access));
+      setUser(userData);
       localStorage.setItem("authTokens", JSON.stringify(data));
       navigate("/");
     } else {
