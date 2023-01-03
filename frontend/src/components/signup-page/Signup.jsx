@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import "./sign-up.css";
 import axios from "axios";

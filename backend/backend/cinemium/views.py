@@ -14,6 +14,18 @@ class MovieView(viewsets.ModelViewSet):
     serializer_class = s.MovieSerializer
     queryset = m.Movie.objects.filter(in_theatre=True)
 
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
+        
 class MovieComingSoonView(viewsets.ModelViewSet):
     serializer_class = s.MovieSerializer
     queryset = m.Movie.objects.filter(in_theatre=False)
@@ -21,6 +33,10 @@ class MovieComingSoonView(viewsets.ModelViewSet):
 class CinemaHallView(viewsets.ModelViewSet):
     serializer_class = s.CinemaHallSerializer
     queryset = m.CinemaHall.objects.all()
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CinemaSeatView(viewsets.ModelViewSet):
     serializer_class = s.CinemaSeatSerializer
@@ -29,6 +45,10 @@ class CinemaSeatView(viewsets.ModelViewSet):
 class CinemaView(viewsets.ModelViewSet):
     serializer_class = s.CinemaSerializer
     queryset = m.Cinema.objects.all()
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TicketView(viewsets.ModelViewSet):
     serializer_class = s.TicketSerializer
@@ -37,12 +57,17 @@ class TicketView(viewsets.ModelViewSet):
 class ShowView(viewsets.ModelViewSet):
     serializer_class = s.ShowSerializer
     queryset = m.Show.objects.all()
-
-class PaymentView(viewsets.ModelViewSet):
-    serializer_class = s.PaymentSerializer
-    queryset = m.Payment.objects.all()
-
-
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object()
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+    def update(self, request, *args, **kwargs):
+        instance = self.get_object()
+        serializer = self.get_serializer(instance, data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
