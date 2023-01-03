@@ -38,13 +38,14 @@ const UpdateMovie = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="admin-forms" onSubmit={handleSubmit}>
       <label>
         Movie ID:
         <input
           type="text"
           value={movieId}
           onChange={(e) => setMovieId(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -54,6 +55,7 @@ const UpdateMovie = () => {
           type="text"
           value={poster}
           onChange={(e) => setPoster(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -63,6 +65,7 @@ const UpdateMovie = () => {
           type="text"
           value={genre}
           onChange={(e) => setGenre(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -72,6 +75,7 @@ const UpdateMovie = () => {
           type="text"
           value={date}
           onChange={(e) => setDate(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -81,6 +85,7 @@ const UpdateMovie = () => {
           type="text"
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -90,6 +95,7 @@ const UpdateMovie = () => {
           type="text"
           value={actors}
           onChange={(e) => setActors(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -99,6 +105,7 @@ const UpdateMovie = () => {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -108,6 +115,7 @@ const UpdateMovie = () => {
           type="text"
           value={director}
           onChange={(e) => setDirector(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -117,6 +125,7 @@ const UpdateMovie = () => {
           type="text"
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -126,6 +135,7 @@ const UpdateMovie = () => {
           type="text"
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -135,6 +145,7 @@ const UpdateMovie = () => {
           type="text"
           value={about}
           onChange={(e) => setAbout(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -144,6 +155,7 @@ const UpdateMovie = () => {
           type="text"
           value={score}
           onChange={(e) => setScore(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -153,10 +165,11 @@ const UpdateMovie = () => {
           type="text"
           value={inTheatre}
           onChange={(e) => setInTheatre(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
-      <button type="submit">Update Movie</button>
+      <button type="submit" className="btn btn-primary delete-cinema">Update Movie</button>
     </form>
   );
 };

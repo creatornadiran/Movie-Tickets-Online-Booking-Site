@@ -45,10 +45,10 @@ const AddCinemaHallForm = () => {
           />
         </div>
         <button
-          className="btn btn-outline-success form-submit-button "
+         className="btn btn-primary"
           type="submit"
         >
-          Submit
+          Add Cinema Hall
         </button>
       </form>
     </div>

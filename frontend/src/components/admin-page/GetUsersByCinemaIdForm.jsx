@@ -25,12 +25,17 @@ function GetUsersByCinemaIdForm() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="admin-forms" onSubmit={handleSubmit}>
         <label>
           Cinema ID:
           <input type="text" value={CinemaId} onChange={handleChange} />
         </label>
-        <button type="submit">Retrieve Users</button>
+        <div>
+          {" "}
+          <button type="submit" className="btn btn-primary delete-cinema">
+            Retrieve Users
+          </button>
+        </div>
       </form>
       {isRetrieved ? (
         users ? (

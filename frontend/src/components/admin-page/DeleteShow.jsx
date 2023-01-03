@@ -25,12 +25,13 @@ function DeleteShowForm(props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form  className="admin-forms" onSubmit={handleSubmit}>
         <label>
           Show ID:
           <input type="text" value={ShowId} onChange={handleChange} />
         </label>
-        <button type="submit">Delete Show</button>
+        <div><button className="delete-cinema" type="submit">Delete Show</button></div>
+        
       </form>
       {isDeleted && <p>Show successfully deleted!</p>}
     </div>

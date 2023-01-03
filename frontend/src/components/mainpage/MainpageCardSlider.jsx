@@ -17,6 +17,7 @@ const MainpageCardSlider = (props) => {
   }, []);
 
   if (!movieList) return null;
+  console.log(movieList.length)
   return (
     <div
       id={"carouselExampleControls" + props.id}
@@ -28,7 +29,7 @@ const MainpageCardSlider = (props) => {
           return (
             <div
               key={i}
-              className={i === 0 ? "carousel-item active" : "carousel-item"}
+             className={i ===0 ? "carousel-item active" : "carousel-item"}
             >
               <div className="cards-wrapper wrapperr">
                 {movieList
