@@ -138,8 +138,8 @@ def getShows(request, cinema_id, movie_day, movie_id):
 
 @api_view(['GET'])
 def getUsersByCinemaId(request, cinema_id):
-    shows = User.objects.raw('SELECT * FROM cinemium.auth_user INNER JOIN ticket ON ticket.user_id = auth_user.id INNER JOIN cinemium.show ON cinemium.show.show_id = ticket.show_id INNER JOIN cinema_hall ON cinema_hall.cinema_hall_id = cinemium.show.cinema_hall_id INNER JOIN cinema ON cinema.cinema_id = cinema_hall.cinema_id WHERE cinema.cinema_id = %s', [cinema_id])
-    serializer = s.ShowSerializer(shows, many=True)
+    users = User.objects.raw('SELECT * FROM cinemium.auth_user INNER JOIN ticket ON ticket.user_id = auth_user.id INNER JOIN cinemium.show ON cinemium.show.show_id = ticket.show_id INNER JOIN cinema_hall ON cinema_hall.cinema_hall_id = cinemium.show.cinema_hall_id INNER JOIN cinema ON cinema.cinema_id = cinema_hall.cinema_id WHERE cinema.cinema_id = %s', [cinema_id])
+    serializer = s.UserSerializer(users, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])

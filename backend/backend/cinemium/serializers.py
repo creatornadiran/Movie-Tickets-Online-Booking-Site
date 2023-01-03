@@ -32,7 +32,10 @@ class LogSerializer(serializers.ModelSerializer):
     class Meta:
         model = m.Log
         fields = '__all__'
-
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = '__all__'
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
             required=True,
