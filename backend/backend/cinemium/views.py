@@ -12,29 +12,43 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 class MovieView(viewsets.ModelViewSet):
     serializer_class = s.MovieSerializer
-    queryset = m.Movie.objects.filter(in_theatre=True)
-
+    queryset = m.Movie.objects.all()
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        log = m.Log(message=f"Movie ID:{serializer.data['movie_id']} created.", level="info")
+        log.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
+        log = m.Log(message=f"Movie ID:{instance.movie_id} removed.", level="info")
+        log.save()
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
+        log = m.Log(message=f"Movie ID:{instance.movie_id} updated.", level="info")
+        log.save()
         serializer = self.get_serializer(instance, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
-        
-class MovieComingSoonView(viewsets.ModelViewSet):
-    serializer_class = s.MovieSerializer
-    queryset = m.Movie.objects.filter(in_theatre=False)
 
 class CinemaHallView(viewsets.ModelViewSet):
     serializer_class = s.CinemaHallSerializer
     queryset = m.CinemaHall.objects.all()
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        log = m.Log(message=f"Hall ID:{serializer.data['cinema_hall_id']} created.", level="info")
+        log.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
+        log = m.Log(message=f"Hall ID:{instance.cinema_hall_id} removed.", level="info")
+        log.save()
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -45,8 +59,17 @@ class CinemaSeatView(viewsets.ModelViewSet):
 class CinemaView(viewsets.ModelViewSet):
     serializer_class = s.CinemaSerializer
     queryset = m.Cinema.objects.all()
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        log = m.Log(message=f"Cinema ID:{serializer.data['cinema_id']} created.", level="info")
+        log.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
+        log = m.Log(message=f"Cinema ID:{instance.cinema_id} removed.", level="info")
+        log.save()
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -57,13 +80,23 @@ class TicketView(viewsets.ModelViewSet):
 class ShowView(viewsets.ModelViewSet):
     serializer_class = s.ShowSerializer
     queryset = m.Show.objects.all()
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        self.perform_create(serializer)
+        log = m.Log(message=f"Show ID:{serializer.data['show_id']} created.", level="info")
+        log.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object()
+        log = m.Log(message=f"Show ID:{instance.show_id} removed.", level="info")
+        log.save()
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
-    
     def update(self, request, *args, **kwargs):
         instance = self.get_object()
+        log = m.Log(message=f"Show ID:{instance.show_id} updated.", level="info")
+        log.save()
         serializer = self.get_serializer(instance, data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
@@ -74,6 +107,9 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
         update_last_login(None, user)
+        log = m.Log(message=f"User ID:{user.id} logged in.", level="info")
+        if(user.is_superuser): log = m.Log(message=f"Superuser ID:{user.id} logged in.", level="info")
+        log.save()
         token['username'] = user.username
         token['is_superuser'] = user.is_superuser
         return token
@@ -85,7 +121,6 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = s.RegisterSerializer
-
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -108,6 +143,12 @@ def getSeats(request, cinema_hall_id):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def getLogs(request):
+    logs = m.Log.objects.all()
+    serializer = s.LogSerializer(logs, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def createTicket(request, total_price, seat_ids, show_id):
     user = request.user
@@ -122,5 +163,7 @@ def createTicket(request, total_price, seat_ids, show_id):
         seat.save()
     ticket = m.Ticket(price=total_price, show_id=show_id, user_id=user.id, seats=seat_ids)
     ticket.save()
+    log = m.Log(message=f"User ID:{user.id} purchased Ticket ID:{ticket.ticket_id}.", level="info")
+    log.save()
     serializer = s.TicketSerializer(ticket)
     return Response(serializer.data, status=status.HTTP_201_CREATED)

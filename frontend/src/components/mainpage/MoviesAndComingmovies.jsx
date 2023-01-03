@@ -40,7 +40,7 @@ const MoviesAndComingmovies = () => {
           aria-labelledby="nav-home-tab"
           tabIndex="0"
         >
-          <MainpageCardSlider inTheatre={true} />
+          <MainpageCardSlider id={1} inTheatre={true} />
         </div>
         <div
           className="tab-pane fade"
@@ -49,7 +49,7 @@ const MoviesAndComingmovies = () => {
           aria-labelledby="nav-profile-tab"
           tabIndex="0"
         >
-          <MainpageCardSlider inTheatre={false} />
+          <MainpageCardSlider id={2} inTheatre={false} />
         </div>
       </div>
     </div>

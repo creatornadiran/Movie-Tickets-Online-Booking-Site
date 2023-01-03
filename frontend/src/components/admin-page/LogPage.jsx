@@ -1,9 +1,32 @@
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const LogPage = () => {
-  return (
-    <div>LogPage</div>
-  )
-}
+  const [logs, setLogs] = useState([]);
 
-export default LogPage
+  useEffect(() => {
+    axios
+      .get("Logs/")
+      .then((response) => {
+        setLogs(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  return (
+    <div>
+      <h1>Logs:</h1>
+      <ul>
+        {logs.map((log) => (
+          <li key={log.id}>
+            {log.message} ({log.timestamp})
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default LogPage;
