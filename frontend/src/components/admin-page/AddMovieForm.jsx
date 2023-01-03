@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const AddFilmForm = () => {
+const AddMovieForm = () => {
   const [poster, setPoster] = useState("");
   const [genre, setGenre] = useState("");
   const [date, setDate] = useState("");
@@ -163,4 +163,4 @@ const AddFilmForm = () => {
   );
 };
 
-export default AddFilmForm;
+export default AddMovieForm;

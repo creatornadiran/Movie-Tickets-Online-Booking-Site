@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function DeleteFilmForm(props) {
+function DeleteMovieForm(props) {
   const [movieId, setMovieId] = useState("");
   const [isDeleted, setIsDeleted] = useState(false);
 
@@ -37,4 +37,4 @@ function DeleteFilmForm(props) {
   );
 }
 
-export default DeleteFilmForm;
+export default DeleteMovieForm;

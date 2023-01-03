@@ -74,29 +74,26 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def get_token(cls, user):
         token = super().get_token(user)
         update_last_login(None, user)
-        # Add custom claims
         token['username'] = user.username
-        # ...
+        token['is_superuser'] = user.is_superuser
         return token
-
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
+class RegisterView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    permission_classes = (AllowAny,)
+    serializer_class = s.RegisterSerializer
 
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def getTickets(request):
     user = request.user
-    tickets = user.ticket_set.all() #query
+    tickets = m.Ticket.objects.raw('SELECT * FROM cinemium.ticket WHERE user_id = %s', [user.id ])
     serializer = s.TicketSerializer(tickets, many=True)
     return Response(serializer.data)
-
-class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    permission_classes = (AllowAny,)
-    serializer_class = s.RegisterSerializer
 
 @api_view(['GET'])
 def getShows(request, cinema_id, movie_day, movie_id):
