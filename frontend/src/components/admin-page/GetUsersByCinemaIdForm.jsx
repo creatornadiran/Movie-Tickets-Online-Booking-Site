@@ -12,7 +12,7 @@ function GetUsersByCinemaIdForm() {
   function handleSubmit(event) {
     event.preventDefault();
     axios
-      .get(`/getUsersByCinemaId/${CinemaId}/`)
+      .get(`getUsersByCinemaId/${CinemaId}`)
       .then((response) => {
         setUsers(response.data);
         setIsRetrieved(true);
@@ -34,13 +34,13 @@ function GetUsersByCinemaIdForm() {
       </form>
       {isRetrieved ? (
         users ? (
-          <p>There is no users for this cinema.</p>
-        ) : (
           <ul>
             {users.map((user) => (
-              <li key={users.id}>{user.id}</li>
+              <li key={users.id}>User ID {user.id}</li>
             ))}
           </ul>
+        ) : (
+          <p>There is no users for this cinema.</p>
         )
       ) : null}
     </div>
