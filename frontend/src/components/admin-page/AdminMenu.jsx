@@ -8,16 +8,20 @@ import DeleteCinemaForm from "./DeleteCinemaForm";
 import DeleteShowForm from "./DeleteShow";
 import AddCinemaHallForm from "./AddCinemaHallForm";
 import DeleteHallForm from "./DeleteHallForm";
+import UpdateShowForm from "./UpdateShowForm";
+import UpdateMovieForm from "./UpdateMovieForm";
 import LogPage from "./LogPage";
 const AdminMenu = () => {
   const [showAddFilmForm, setShowAddFilmForm] = useState(false);
   const [showDeleteFilmForm, setShowDeleteFilmForm] = useState(false);
-  const [addComingSoonFilmForm, setAddComingSoonFilmForm] = useState(false);
+  const [showComingSoonFilmForm, setAddComingSoonFilmForm] = useState(false);
   const [showAddCinemaForm, setShowAddCinemaForm] = useState(false);
   const [showDeleteCinemaForm, setShowDeleteCinemaForm] = useState(false);
   const [showDeleteShowForm, setShowDeleteShowForm] = useState(false);
-  const [addCinemaHallForm, setAddCinemaHallForm] = useState(false);
-  const [deleteCinemaHallForm, setDeleteCinemaHallForm] = useState(false);
+  const [showCinemaHallForm, setAddCinemaHallForm] = useState(false);
+  const [showDeleteCinemaHallForm, setDeleteCinemaHallForm] = useState(false);
+  const [showUpdateShowForm, setshowUpdateShowForm] = useState(false);
+  const [showUpdateMovieForm, setshowUpdateMovieForm] = useState(false);
   const [showLogPage, setShowLogPage] = useState(false);
   return (
     <div>
@@ -49,6 +53,8 @@ const AdminMenu = () => {
                   setAddCinemaHallForm(false);
                   setDeleteCinemaHallForm(false);
                   setShowLogPage(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(false);
                 }}
               >
                 Add Film <span className="sr-only"></span>
@@ -67,9 +73,31 @@ const AdminMenu = () => {
                   setAddCinemaHallForm(false);
                   setDeleteCinemaHallForm(false);
                   setShowLogPage(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(false);
                 }}
               >
                 Delete Film <span className="sr-only"></span>
+              </a>
+            </li>
+            <li className="nav-item ">
+              <a
+                className="nav-link  admin-menu-options"
+                onClick={() => {
+                  setShowDeleteFilmForm(false);
+                  setShowAddFilmForm(false);
+                  setAddComingSoonFilmForm(false);
+                  setShowDeleteShowForm(false);
+                  setShowAddCinemaForm(false);
+                  setShowDeleteCinemaForm(false);
+                  setAddCinemaHallForm(false);
+                  setDeleteCinemaHallForm(false);
+                  setShowLogPage(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(true);
+                }}
+              >
+                Update Film <span className="sr-only"></span>
               </a>
             </li>
             <li className="nav-item ">
@@ -85,6 +113,8 @@ const AdminMenu = () => {
                   setAddCinemaHallForm(false);
                   setDeleteCinemaHallForm(false);
                   setShowLogPage(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(false);
                 }}
               >
                 Add Coming Soon Film
@@ -103,9 +133,31 @@ const AdminMenu = () => {
                   setAddCinemaHallForm(false);
                   setDeleteCinemaHallForm(false);
                   setShowLogPage(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(false);
                 }}
               >
                 Delete Show
+              </a>
+            </li>
+            <li className="nav-item ">
+              <a
+                className="nav-link admin-menu-options"
+                onClick={() => {
+                  setAddComingSoonFilmForm(false);
+                  setShowDeleteFilmForm(false);
+                  setShowAddFilmForm(false);
+                  setShowDeleteShowForm(false);
+                  setShowAddCinemaForm(false);
+                  setShowDeleteCinemaForm(false);
+                  setAddCinemaHallForm(false);
+                  setDeleteCinemaHallForm(false);
+                  setShowLogPage(false);
+                  setshowUpdateShowForm(true);
+                  setshowUpdateMovieForm(false);
+                }}
+              >
+                Update Show
               </a>
             </li>
             <li className="nav-item ">
@@ -121,6 +173,8 @@ const AdminMenu = () => {
                   setAddCinemaHallForm(false);
                   setDeleteCinemaHallForm(false);
                   setShowLogPage(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(false);
                 }}
               >
                 Add Cinema
@@ -139,6 +193,8 @@ const AdminMenu = () => {
                   setAddCinemaHallForm(false);
                   setDeleteCinemaHallForm(false);
                   setShowLogPage(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(false);
                 }}
               >
                 Delete Cinema
@@ -157,6 +213,8 @@ const AdminMenu = () => {
                   setShowAddFilmForm(false);
                   setDeleteCinemaHallForm(false);
                   setShowLogPage(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(false);
                 }}
               >
                 Add Hall
@@ -175,6 +233,8 @@ const AdminMenu = () => {
                   setShowDeleteFilmForm(false);
                   setShowAddFilmForm(false);
                   setShowLogPage(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(false);
                 }}
               >
                 Delete Hall
@@ -193,6 +253,8 @@ const AdminMenu = () => {
                   setAddComingSoonFilmForm(false);
                   setShowDeleteFilmForm(false);
                   setShowAddFilmForm(false);
+                  setshowUpdateShowForm(false);
+                  setshowUpdateMovieForm(false);
                 }}
               >
                 Log
@@ -203,12 +265,14 @@ const AdminMenu = () => {
       </nav>
       {showAddFilmForm && <AddFilmForm />}
       {showDeleteFilmForm && <DeleteFilmForm />}
-      {addComingSoonFilmForm && <AddComingSoonFilmForm />}
+      {showComingSoonFilmForm && <AddComingSoonFilmForm />}
       {showAddCinemaForm && <AddCinemaForm />}
       {showDeleteShowForm && <DeleteShowForm />}
       {showDeleteCinemaForm && <DeleteCinemaForm />}
-      {addCinemaHallForm && <AddCinemaHallForm />}
-      {deleteCinemaHallForm && <DeleteHallForm />}
+      {showCinemaHallForm && <AddCinemaHallForm />}
+      {showDeleteCinemaHallForm && <DeleteHallForm />}
+      {showUpdateShowForm && <UpdateShowForm />}
+      {showUpdateMovieForm && <UpdateMovieForm />}
       {showLogPage && <LogPage />}
     </div>
   );
