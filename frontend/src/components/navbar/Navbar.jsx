@@ -70,7 +70,7 @@ const Navbar = () => {
             </button>
           </div>
         )}
-        {user && <p>Hello {user.username}</p>}
+        {user && <p className="user-name">Hello {user.username}</p>}
         <img src={logo} alt="Logo" className="nav--icon" />
         <div className="iconn">
           <FaHome size={30} color="#373e98" onClick={toHome} />
