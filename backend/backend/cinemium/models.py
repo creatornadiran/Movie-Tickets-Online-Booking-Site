@@ -34,10 +34,6 @@ class CinemaSeat(models.Model):
     col_no = models.CharField(max_length=45)
 
     class Meta:
-        models.CheckConstraint(
-            check=models.Q(is_booked=True, ticket_id__isnull=False) | models.Q(is_booked=False, ticket_id__isnull=True),
-            name='ticket_id_null_if_not_booked'
-        )
         db_table = 'cinema_seat'
 
 

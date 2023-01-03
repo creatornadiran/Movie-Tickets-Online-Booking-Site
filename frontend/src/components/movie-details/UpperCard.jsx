@@ -2,6 +2,27 @@ import "./UpperCard.css";
 import { FaStar, FaTicketAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 const UpperCard = (props) => {
+  function getHoursAndMinutes(dateString) {
+    const date = new Date(dateString);
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    let monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    return `${day} ${monthNames[month]} ${year}`;
+  }
   const tagList = props.tags.split(", ");
   const navigate = useNavigate();
   const toReservation = () => {
@@ -55,7 +76,9 @@ const UpperCard = (props) => {
                   Book Ticket
                 </div>
               </button>
-            ) : null}
+            ) : (
+              <p>Release Date: {getHoursAndMinutes(props.date)}</p>
+            )}
           </div>
         </div>
       </div>

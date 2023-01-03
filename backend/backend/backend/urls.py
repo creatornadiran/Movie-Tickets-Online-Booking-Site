@@ -39,6 +39,7 @@ urlpatterns = [
     path('CreateTicket/<int:total_price>/<str:seat_ids>/<int:show_id>', v.createTicket, name='create_ticket'),
     path(r'Tickets/', v.getTickets),
     path(r'Logs/', v.getLogs),
+    path(r'getUsersByCinemaId/', v.getUsersByCinemaId),
     path(r'token/', v.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path(r'token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path(r'register/', v.RegisterView.as_view(), name='auth_register'),
