@@ -1,5 +1,7 @@
-import slide1 from "../../assets/images/slide1.png";
 import "./mainpage-card-slider.css";
+import slider1 from "../../assets/images/slider1.jpg";
+import slider2 from "../../assets/images/slider2.jpg";
+import slider3 from "../../assets/images/slider3.jpg";
 const campaigns = () => {
   return (
     <div
@@ -31,25 +33,13 @@ const campaigns = () => {
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <img
-            src="https://www.paribucineverse.com/Files/Campaigns/nov22/nov22-campaign-detail.jpg"
-            alt="Slide"
-            className="camp-nav d-block w-100"
-          />
+          <img src={slider1} alt="Slide" className="camp-nav d-block w-100" />
         </div>
         <div className="carousel-item">
-          <img
-            src="https://www.paribucineverse.com/Files/Carousel/Black_Adam_vizyonda_slider.jpg"
-            alt="Slide"
-            className="camp-nav d-block w-100"
-          />
+          <img src={slider2} alt="Slide" className="camp-nav d-block w-100" />
         </div>
         <div className="carousel-item">
-          <img
-            src="https://www.paribucineverse.com/Files/Carousel/Paribu_Cineverse_-_Vizyonda_Slider-min.jpg"
-            alt="Slide"
-            className="camp-nav d-block w-100"
-          />
+          <img src={slider3} alt="Slide" className="camp-nav d-block w-100" />
         </div>
       </div>
       <button

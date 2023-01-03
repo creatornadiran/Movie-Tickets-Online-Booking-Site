@@ -28,6 +28,10 @@ class TicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = m.Ticket
         fields = '__all__'
+class LogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = m.Log
+        fields = '__all__'
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -59,9 +63,8 @@ class RegisterSerializer(serializers.ModelSerializer):
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name']
         )
-
-        
         user.set_password(validated_data['password'])
         user.save()
-
+        log = m.Log(message=f"User ID:{user.id} has registered.", level="info")
+        log.save()
         return user

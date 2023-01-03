@@ -12,7 +12,10 @@ const Navbar = () => {
   const toLogin = () => {
     navigate("/log-in");
   };
-
+  const logout = () => {
+    logoutUser();
+    navigate("/");
+  };
   const toSignup = () => {
     navigate("/sign-up");
   };
@@ -30,17 +33,27 @@ const Navbar = () => {
       <div className="container-fluid">
         {user ? (
           <div>
+            {user.is_superuser ? (
+              <button
+                className="btn btn-outline-success admin "
+                type="submit"
+                onClick={toAdminPage}
+              >
+                Admin Panel
+              </button>
+            ) : (
+              <button
+                className="btn btn-outline-success "
+                type="submit"
+                onClick={toTicketPage}
+              >
+                My Tickets
+              </button>
+            )}
             <button
               className="btn btn-outline-success "
               type="submit"
-              onClick={toTicketPage}
-            >
-              My Tickets
-            </button>
-            <button
-              className="btn btn-outline-success "
-              type="submit"
-              onClick={logoutUser}
+              onClick={logout}
             >
               Log Out
             </button>
@@ -61,32 +74,12 @@ const Navbar = () => {
             >
               Sign Up
             </button>
-            <button
-              className="btn btn-outline-success admin "
-              type="submit"
-              onClick={toAdminPage}
-            >
-              Admin
-            </button>
           </div>
         )}
         {user && <p className="user-name">Hello {user.username}</p>}
         <img src={logo} alt="Logo" className="nav--icon" />
         <div className="iconn">
           <FaHome size={30} color="#373e98" onClick={toHome} />
-        </div>
-        <div className="search-bar">
-          <form className="d-flex my-button" role="search">
-            <input
-              className="form-control me-2 "
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success " type="submit">
-              Search
-            </button>
-          </form>
         </div>
 
         <button

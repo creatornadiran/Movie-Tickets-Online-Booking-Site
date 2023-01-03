@@ -24,7 +24,6 @@ from rest_framework_simplejwt.views import (
 
 router = routers.DefaultRouter()
 router.register(r'Movies', v.MovieView)
-router.register(r'MovieComingSoon', v.MovieComingSoonView)
 router.register(r'CinemaHalls', v.CinemaHallView)
 router.register(r'CinemaSeats', v.CinemaSeatView)
 router.register(r'Cinemas', v.CinemaView)
@@ -39,6 +38,8 @@ urlpatterns = [
     path('Seats/<int:cinema_hall_id>', v.getSeats, name='get_seats'),
     path('CreateTicket/<int:total_price>/<str:seat_ids>/<int:show_id>', v.createTicket, name='create_ticket'),
     path(r'Tickets/', v.getTickets),
+    path(r'Logs/', v.getLogs),
+    path(r'getUsersByCinemaId/', v.getUsersByCinemaId),
     path(r'token/', v.MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path(r'token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path(r'register/', v.RegisterView.as_view(), name='auth_register'),

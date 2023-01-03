@@ -4,24 +4,23 @@ import axios from "axios";
 import React from "react";
 
 const MainpageCardSlider = (props) => {
-  let inTheatre = props.inTheatre;
+  let isInTheatre = props.inTheatre;
+  function getInTheatreMovies(movieArray) {
+    return movieArray.filter((movieObj) => movieObj.in_theatre === isInTheatre);
+  }
+
   const [movieList, setmovieList] = React.useState(null);
   React.useEffect(() => {
-    if (inTheatre) {
-      axios.get("/api/Movies/").then((response) => {
-        setmovieList(response.data);
-      });
-    } else {
-      axios.get("/api/MovieComingSoon/").then((response) => {
-        setmovieList(response.data);
-      });
-    }
+    axios.get("/api/Movies/").then((response) => {
+      setmovieList(getInTheatreMovies(response.data));
+    });
   }, []);
+
   if (!movieList) return null;
   console.log(movieList.length)
   return (
     <div
-      id="carouselExampleControls"
+      id={"carouselExampleControls" + props.id}
       className="carousel slide "
       data-ride="carousel"
     >
@@ -51,7 +50,7 @@ const MainpageCardSlider = (props) => {
       <button
         className="carousel-control-prev "
         type="button"
-        data-bs-target="#carouselExampleControls"
+        data-bs-target={"#carouselExampleControls" + props.id}
         data-bs-slide="prev"
       >
         <span
@@ -63,7 +62,7 @@ const MainpageCardSlider = (props) => {
       <button
         className="carousel-control-next"
         type="button"
-        data-bs-target="#carouselExampleControls"
+        data-bs-target={"#carouselExampleControls" + props.id}
         data-bs-slide="next"
       >
         <span

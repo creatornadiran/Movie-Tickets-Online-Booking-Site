@@ -18,6 +18,7 @@ const FilmCard = (props) => {
         duration: movie.duration,
         director: movie.director,
         in_theatre: movie.in_theatre,
+        date: movie.date,
       },
     });
   };
