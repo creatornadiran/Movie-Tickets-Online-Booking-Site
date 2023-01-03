@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useContext } from "react";
 import axios from "axios";
+
 const AddFilmForm = () => {
   const [poster, setPoster] = useState("");
   const [genre, setGenre] = useState("");
   const [date, setDate] = useState("");
-  const [end_date, setEnd_date] = useState("");
+  const [endDate, setEndDate] = useState("");
   const [actors, setActors] = useState("");
   const [name, setName] = useState("");
   const [director, setDirector] = useState("");
@@ -13,14 +13,15 @@ const AddFilmForm = () => {
   const [language, setLanguage] = useState("");
   const [about, setAbout] = useState("");
   const [score, setScore] = useState("");
-  
+  const [inTheatre, setInTheatre] = useState(true);
+
   let handleSubmit = async (e) => {
     e.preventDefault();
     const data = {
       poster: poster,
       genre: genre,
       date: date,
-      end_date: end_date,
+      end_date: endDate,
       actors: actors,
       name: name,
       director: director,
@@ -28,7 +29,7 @@ const AddFilmForm = () => {
       language: language,
       about: about,
       score: score,
-      
+      in_theatre: inTheatre,
     };
     axios
       .post("http://127.0.0.1:8000/api/Movies/", data)
@@ -39,8 +40,6 @@ const AddFilmForm = () => {
         console.log(error);
       });
   };
-
-  
 
   return (
     <div>
@@ -76,8 +75,8 @@ const AddFilmForm = () => {
           <label for="formGroupExampleInput2">Enter movie end date </label>
           <input
             type="text"
-            value={end_date}
-            onChange={(e) => setEnd_date(e.target.value)}
+            value={endDate}
+            onChange={(e) => setEndDate(e.target.value)}
             className="form-control"
           />
         </div>
@@ -127,7 +126,7 @@ const AddFilmForm = () => {
           />
         </div>
         <div className="form-group">
-          <label for="formGroupExampleInput2">Enter about movie</label>
+          <label for="formGroupExampleInput2">Enter movie summary</label>
           <input
             type="text"
             value={about}
@@ -144,11 +143,20 @@ const AddFilmForm = () => {
             className="form-control"
           />
         </div>
-        <button
-          className="btn btn-outline-success form-submit-button "
-          type="submit"
-        >
-          Submit
+        <div className="form-group form-check">
+          <input
+            type="checkbox"
+            className="form-check-input"
+            id="inTheatre"
+            checked={inTheatre}
+            onChange={(e) => setInTheatre(e.target.checked)}
+          />
+          <label className="form-check-label" for="inTheatre">
+            Currently in theatre?
+          </label>
+        </div>
+        <button type="submit" className="btn btn-primary">
+          Add movie
         </button>
       </form>
     </div>
