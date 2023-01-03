@@ -25,12 +25,17 @@ function DeleteHallForm(props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="admin-forms" onSubmit={handleSubmit}>
         <label>
           Hall ID:
           <input type="text" value={hallId} onChange={handleChange} />
         </label>
-        <button type="submit">Delete Hall</button>
+        <div>
+          {" "}
+          <button type="submit" className="btn btn-primary delete-cinema">
+            Delete Hall
+          </button>
+        </div>
       </form>
       {isDeleted && <p>Hall successfully deleted!</p>}
     </div>

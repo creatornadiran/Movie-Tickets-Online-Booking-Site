@@ -63,8 +63,8 @@ const AddShowForm = () => {
             className="form-control"
           />
         </div>
-        <button className="btn btn-outline-success form-submit-button " type="submit">
-        Submit
+        <button className="btn btn-primary" type="submit">
+        Add Show
       </button>
       </form>
     </div>

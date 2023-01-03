@@ -21,13 +21,14 @@ const UpdateShowForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="admin-forms" onSubmit={handleSubmit}>
       <label>
         Show ID:
         <input
           type="text"
           value={showId}
           onChange={(e) => setShowId(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -37,6 +38,7 @@ const UpdateShowForm = () => {
           type="text"
           value={date}
           onChange={(e) => setDate(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -46,6 +48,7 @@ const UpdateShowForm = () => {
           type="text"
           value={cinemaHall}
           onChange={(e) => setCinemaHall(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -55,6 +58,7 @@ const UpdateShowForm = () => {
           type="text"
           value={movie}
           onChange={(e) => setMovie(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
@@ -64,10 +68,11 @@ const UpdateShowForm = () => {
           type="text"
           value={showPrice}
           onChange={(e) => setShowPrice(e.target.value)}
+          className="form-control"
         />
       </label>
       <br />
-      <button type="submit">Update Show</button>
+      <button className="btn btn-primary" type="submit">Update Show</button>
     </form>
   );
 };

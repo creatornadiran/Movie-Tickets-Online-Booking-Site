@@ -12,9 +12,6 @@ const Ticket = () => {
     let day = date.getDate();
     let month = date.getMonth();
     let year = date.getFullYear();
-<<<<<<< HEAD
-    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-=======
     let monthNames = [
       "January",
       "February",
@@ -29,7 +26,6 @@ const Ticket = () => {
       "November",
       "December",
     ];
->>>>>>> c58c4a348df76a52931b108d3337a5658333302f
     if (hours < 10) {
       hours = `0${hours}`;
     }

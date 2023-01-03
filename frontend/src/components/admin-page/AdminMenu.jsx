@@ -261,10 +261,6 @@ const AdminMenu = () => {
                   setGetUsersByCinemaIdForm(false);
                   setAddShowForm(true);
                   setShowLogPage(false);
-<<<<<<< HEAD
-                  setShowLogPage(false);
-=======
->>>>>>> c58c4a348df76a52931b108d3337a5658333302f
                   setDeleteCinemaHallForm(false);
                   setAddCinemaHallForm(false);
                   setShowDeleteCinemaForm(false);

@@ -25,12 +25,13 @@ function DeleteCinemaForm(props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="admin-forms" onSubmit={handleSubmit}>
         <label>
           Cinema ID:
           <input type="text" value={CinemaId} onChange={handleChange} />
         </label>
-        <button type="submit">Delete Cinema</button>
+        <div> <button type="submit" className="btn btn-primary delete-cinema">Delete Cinema</button></div>
+       
       </form>
       {isDeleted && <p>Cinema successfully deleted!</p>}
     </div>

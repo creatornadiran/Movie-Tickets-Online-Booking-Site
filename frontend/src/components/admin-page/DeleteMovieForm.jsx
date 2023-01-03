@@ -25,12 +25,17 @@ function DeleteMovieForm(props) {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form className="admin-forms" onSubmit={handleSubmit}>
         <label>
           Movie ID:
           <input type="text" value={movieId} onChange={handleChange} />
         </label>
-        <button type="submit">Delete Movie</button>
+        <div>
+          {" "}
+          <button type="submit" className="btn btn-primary delete-cinema">
+            Delete Movie
+          </button>
+        </div>
       </form>
       {isDeleted && <p>Movie successfully deleted!</p>}
     </div>
