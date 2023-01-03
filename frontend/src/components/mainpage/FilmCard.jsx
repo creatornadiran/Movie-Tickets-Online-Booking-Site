@@ -38,7 +38,7 @@ const FilmCard = (props) => {
           }}
           className="btn btn-primary"
         >
-          Go somewhere
+          Go to film page
         </a>
       </div>
     </div>

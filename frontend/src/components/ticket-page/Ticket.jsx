@@ -9,13 +9,17 @@ const Ticket = () => {
     const date = new Date(dateString);
     let hours = date.getHours();
     let minutes = date.getMinutes();
+    let day = date.getDate();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    let monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     if (hours < 10) {
       hours = `0${hours}`;
     }
     if (minutes < 10) {
       minutes = `0${minutes}`;
     }
-    return `${hours}:${minutes}`;
+    return `${day} ${monthNames[month]} ${year} - ${hours}:${minutes}`;
   }
   let { user, logoutUser } = useContext(AuthContext);
   let { authTokens } = useContext(AuthContext);

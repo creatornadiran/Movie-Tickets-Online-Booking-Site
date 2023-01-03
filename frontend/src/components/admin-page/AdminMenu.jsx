@@ -257,7 +257,7 @@ const AdminMenu = () => {
                 onClick={() => {
                   setAddShowForm(true);
                   setShowLogPage(false);
-                  setShowLogPage(true);
+                  setShowLogPage(false);
                   setDeleteCinemaHallForm(false);
                   setAddCinemaHallForm(false);
                   setShowDeleteCinemaForm(false);
